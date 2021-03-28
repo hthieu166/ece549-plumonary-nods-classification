@@ -7,5 +7,10 @@ if __name__ == "__main__":
     # ckpt = T.load("log/nas-base-fold-0/0020.model", map_location="cpu")
 
     # print(ckpt)
-    # net = ConvRes([[64, 64, 64], [128, 128, 256], [256, 256, 256, 512]])
-    # print(net)
+    net = ConvRes([[4,4], [4,8], [8,8]])
+    # net.load_state_dict(ckpt)
+    # for i in net.parameters():
+    #     print(i.shape)
+    for comp1, comp2 in zip(net.parameters(), ckpt["net"].parameters()):
+        print(comp1.shape == comp2.shape)
+    # print()

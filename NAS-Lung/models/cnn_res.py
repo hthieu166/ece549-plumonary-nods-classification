@@ -7,7 +7,7 @@ from .net_sphere import *
 
 
 debug = False
-
+import ipdb
 
 class ResCBAMLayer(nn.Module):
     def __init__(self, in_planes, feature_size):
@@ -128,7 +128,9 @@ class ConvRes(nn.Module):
     def forward(self, inputs):
         if debug:
             print(inputs.size())
+        ipdb.set_trace()
         out = self.conv1(inputs)
+        ipdb.set_trace()
         if debug:
             print(out.size())
         out = self.conv2(out)

@@ -24,12 +24,17 @@ import os.path as osp
 
 #Modified by hthieu
 from code.train_utils import TrainUtils
+# print(os.environ["CUDA_VISIBLE_DEVICES"])
+os.environ["CUDA_VISIBLE_DEVICES"] = "0" 
+print("Total cuda devices", torch.cuda.device_count())
+#SET GPU
+
 
 # preprocesspath  = '/media/DATA/LUNA16/crop/'
-preprocesspath  = '/home/hthieu/plumonary_nods_classification/data/crop/'
+preprocesspath  = '../../data/crop/'
 dataframe       = pd.read_csv('./data/annotationdetclsconvfnl_v3.csv',
                         names=['seriesuid', 'coordX', 'coordY', 'coordZ', 'diameter_mm', 'malignant'])
-SUBSETS_DIR      = '/home/hthieu/plumonary_nods_classification/ece549-plumonary-nods-classification/NAS-Lung/subsets/'
+SUBSETS_DIR      = './subsets/'
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 parser.add_argument('--lr', default=0.0002, type=float, help='learning rate')
@@ -175,7 +180,7 @@ testloader = torch.utils.data.DataLoader(testset, batch_size=args.batch_size, sh
 
 
 # savemodelpath = './checkpoint-' + str(fold) + '/'
-tu = TrainUtils("./log/nas-base-fold-"+str(fold), ckpt_every = 50) 
+tu = TrainUtils("./log/nas-model-1-fold-"+str(fold), ckpt_every = 50) 
 
 # Model
 print(args.resume)
@@ -199,7 +204,8 @@ if args.resume:
 else:
     logging.info('==> Building model..')
     logging.info('args.savemodel : ' + args.savemodel)
-    net = ConvRes([[64, 64, 64], [128, 128, 256], [256, 256, 256, 512]])
+    net = ConvRes([[64, 64, 64], [128, 128, 256], [256, 256, 256, 512]]) #base
+    # net = ConvRes([[4,4], [4,8], [8,8]]) # model-1
     if args.savemodel != "":
         # args.savemodel = '/home/xxx/DeepLung-master/nodcls/checkpoint-5/ckpt.t7'
         checkpoint = torch.load(args.savemodel)
@@ -229,6 +235,7 @@ if use_cuda:
     else:
         device_ids = map(int, list(filter(str.isdigit, args.gpuids)))
 
+    device_ids = [torch.device('cuda:0')]
     print('gpu use' + str(device_ids))
     net = torch.nn.DataParallel(net, device_ids=device_ids)
     cudnn.benchmark = False  # True
@@ -248,11 +255,11 @@ def train(epoch):
     train_loss = 0
     correct = 0
     total = 0
+    print(net)
     with tqdm.tqdm(total=len(trainloader)) as pbar:
         for batch_idx, (inputs, targets, feat) in enumerate(trainloader):
             if use_cuda:
                 inputs, targets = inputs.cuda(), targets.cuda()
-
             optimizer.zero_grad()
             inputs, targets = Variable(inputs), Variable(targets) 
             outputs = net(inputs)[0]
