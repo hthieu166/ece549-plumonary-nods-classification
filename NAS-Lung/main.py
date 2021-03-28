@@ -22,10 +22,14 @@ import pandas as pd
 import glob
 import os.path as osp
 
-preprocesspath  = '/media/DATA/LUNA16/crop/'
+#Modified by hthieu
+from code.train_utils import TrainUtils
+
+# preprocesspath  = '/media/DATA/LUNA16/crop/'
+preprocesspath  = '/home/hthieu/plumonary_nods_classification/data/crop/'
 dataframe       = pd.read_csv('./data/annotationdetclsconvfnl_v3.csv',
                         names=['seriesuid', 'coordX', 'coordY', 'coordZ', 'diameter_mm', 'malignant'])
-LUNA_DIR        = '/media/DATA/LUNA16/luna16/subsets/subset'
+SUBSETS_DIR      = '/home/hthieu/plumonary_nods_classification/ece549-plumonary-nods-classification/NAS-Lung/subsets/'
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
 parser.add_argument('--lr', default=0.0002, type=float, help='learning rate')
@@ -34,8 +38,8 @@ parser.add_argument('--resume', '-r', action='store_true', help='resume from che
 parser.add_argument('--savemodel', type=str, default='', help='resume from checkpoint model')
 parser.add_argument("--gpuids", type=str, default='all', help='use which gpu')
 
-parser.add_argument('--num_epochs', type=int, default=700)
-parser.add_argument('--num_epochs_decay', type=int, default=70)
+parser.add_argument('--num_epochs', type=int, default=100)
+parser.add_argument('--num_epochs_decay', type=int, default=20)
 
 parser.add_argument('--num_workers', type=int, default=24)
 
@@ -50,7 +54,7 @@ CROPSIZE = 32
 gbtdepth = 1
 fold = args.fold
 blklst = []
-logging.basicConfig(filename='log-' + str(fold), level=logging.INFO)
+# logging.basicConfig(filename='log-' + str(fold), level=logging.INFO)
 
 use_cuda = torch.cuda.is_available()
 best_acc = 0  # best test accuracy
@@ -62,24 +66,29 @@ pixvlu, npix = 0, 0
 
 all_nods_npy = glob.glob(osp.join(preprocesspath,"*.npy"))
 print("Total nodules ", len(all_nods_npy))
-for fname in all_nods_npy:
-    if fname.endswith('.npy'):
-        if fname[:-4] in blklst: continue
-        data = np.load(fname)
-        pixvlu += np.sum(data)
-        # print("data.shape = " + str(data.shape))
-        npix += np.prod(data.shape)
-pixmean = pixvlu / float(npix)
-pixvlu = 0
-for fname in all_nods_npy:
-    if fname.endswith('.npy'):
-        if fname[:-4] in blklst: continue
-        data = np.load(fname) - pixmean
-        pixvlu += np.sum(data * data)
 
-pixstd = np.sqrt(pixvlu / float(npix))
-# pixstd /= 255
-print(pixmean, pixstd)
+#CALCULATE MEAN & STD
+# for fname in all_nods_npy:
+#     if fname.endswith('.npy'):
+#         if fname[:-4] in blklst: continue
+#         data = np.load(fname)
+#         pixvlu += np.sum(data)
+#         # print("data.shape = " + str(data.shape))
+#         npix += np.prod(data.shape)
+# pixmean = pixvlu / float(npix)
+# pixvlu = 0
+# for fname in all_nods_npy:
+#     if fname.endswith('.npy'):
+#         if fname[:-4] in blklst: continue
+#         data = np.load(fname) - pixmean
+#         pixvlu += np.sum(data * data)
+
+# pixstd = np.sqrt(pixvlu / float(npix))
+# # pixstd /= 255
+# print(pixmean, pixstd)
+
+pixmean, pixstd = 178.83227827824444 , 50.05896544303765
+
 logging.info('mean ' + str(pixmean) + ' std ' + str(pixstd))
 # Datatransforms
 logging.info('==> Preparing data..')  # Random Crop, Zero out, x z flip, scale,
@@ -113,13 +122,11 @@ crdxlst = dataframe['coordX'].tolist()[1:]
 crdylst = dataframe['coordY'].tolist()[1:]
 crdzlst = dataframe['coordZ'].tolist()[1:]
 dimlst = dataframe['diameter_mm'].tolist()[1:]
-# test id
-teidlst = []
-for fname in os.listdir(LUNA_DIR + str(fold) + '/'):
-    # for fname in os.listdir('/media/jehovah/Work/data/LUNA/rowfile/subset' + str(fold) + '/'):
 
-    if fname.endswith('.mhd'):
-        teidlst.append(fname[:-4])
+# test id
+with open(osp.join(SUBSETS_DIR, "subset{}.txt".format(str(fold)))) as fo:
+    teidlst = [i.strip() for i in fo.readlines()]
+
 mxx = mxy = mxz = mxd = 0
 for srsid, label, x, y, z, d in zip(alllst, labellst, crdxlst, crdylst, crdzlst, dimlst):
     mxx = max(abs(float(x)), mxx)
@@ -157,6 +164,7 @@ for idx in range(len(tefeatlst)):
     # tefeatlst[idx][1] /= mxy
     # tefeatlst[idx][2] /= mxz
     tefeatlst[idx][-1] /= mxd
+
 trainset = lunanod(preprocesspath, trfnamelst, trlabellst, trfeatlst, train=True, download=True,
                    transform=transform_train)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size, shuffle=True, num_workers=20)
@@ -164,25 +172,29 @@ trainloader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size, 
 testset = lunanod(preprocesspath, tefnamelst, telabellst, tefeatlst, train=False, download=True,
                   transform=transform_test)
 testloader = torch.utils.data.DataLoader(testset, batch_size=args.batch_size, shuffle=False, num_workers=20)
-savemodelpath = './checkpoint-' + str(fold) + '/'
+
+
+# savemodelpath = './checkpoint-' + str(fold) + '/'
+tu = TrainUtils("./log/nas-base-fold-"+str(fold), ckpt_every = 50) 
+
 # Model
 print(args.resume)
 if args.resume:
     print('==> Resuming from checkpoint..')
-    print(args.savemodel)
-    if args.savemodel == '':
-        logging.info('==> Resuming from checkpoint..')
-        assert os.path.isdir(savemodelpath), 'Error: no checkpoint directory found!'
-        checkpoint = torch.load(savemodelpath + 'ckpt.t7')
+    # print(args.savemodel)
+    # if args.savemodel == '':
+    #     logging.info('==> Resuming from checkpoint..')
+    #     assert os.path.isdir(savemodelpath), 'Error: no checkpoint directory found!'
+    #     checkpoint = torch.load(savemodelpath + 'ckpt.t7')
         
-    else:
-        logging.info('==> Resuming from checkpoint..')
-        assert os.path.isdir(savemodelpath), 'Error: no checkpoint directory found!'
-        checkpoint = torch.load(args.savemodel)
+    # else:
+    #     logging.info('==> Resuming from checkpoint..')
+    #     assert os.path.isdir(savemodelpath), 'Error: no checkpoint directory found!'
+    #     checkpoint = torch.load(args.savemodel)
+    checkpoint = tu.resume_from_ckpt(args.savemodel)
     net = checkpoint['net']
     best_acc = checkpoint['acc']
     start_epoch = checkpoint['epoch']
-    print(savemodelpath + " load success")
     print(start_epoch)
 else:
     logging.info('==> Building model..')
@@ -226,37 +238,39 @@ optimizer = optim.Adam(net.parameters(), lr=args.lr, betas=(args.beta1, args.bet
 
 
 # L2Loss = torch.nn.MSELoss()
-
+import tqdm
 # Training
 def train(epoch):
-    logging.info('\nEpoch: ' + str(epoch))
+    # logging.info('\nEpoch: ' + str(epoch))
+    tu.log("\nEpoch: " + str(epoch))
     net.train()
     get_lr(epoch)
     train_loss = 0
     correct = 0
     total = 0
+    with tqdm.tqdm(total=len(trainloader)) as pbar:
+        for batch_idx, (inputs, targets, feat) in enumerate(trainloader):
+            if use_cuda:
+                inputs, targets = inputs.cuda(), targets.cuda()
 
-    for batch_idx, (inputs, targets, feat) in enumerate(trainloader):
-        if use_cuda:
-            inputs, targets = inputs.cuda(), targets.cuda()
+            optimizer.zero_grad()
+            inputs, targets = Variable(inputs), Variable(targets) 
+            outputs = net(inputs)[0]
+            loss = criterion(outputs, targets)
+            loss.backward()
+            optimizer.step()
+            train_loss += loss.data.item()
+            _, predicted = torch.max(outputs.data, 1)
+            total += targets.size(0)
+            correct += predicted.eq(targets.data).cpu().sum()
+            pbar.update()
 
-        optimizer.zero_grad()
-        inputs, targets = Variable(inputs), Variable(targets)
-        outputs = net(inputs)
-        loss = criterion(outputs, targets)
-
-        loss.backward()
-        optimizer.step()
-        train_loss += loss.data.item()
-        _, predicted = torch.max(outputs.data, 1)
-        total += targets.size(0)
-        correct += predicted.eq(targets.data).cpu().sum()
-        # progress_bar(batch_idx, len(trainloader), 'Loss: %.3f | Acc: %.3f%% (%d/%d)'
-
-    print('ep ' + str(epoch) + ' tracc ' + str(correct.data.item() / float(total)) + ' lr ' + str(lr))
-
-    logging.info(
-        'ep ' + str(epoch) + ' tracc ' + str(correct.data.item() / float(total)) + ' lr ' + str(lr))
+    train_acc = correct.data.item() / float(total)
+    tu.add_train_info(epoch, {
+        "acc": train_acc, "lr": lr, "loss": train_loss})
+    # print('ep ' + str(epoch) + ' tracc ' + str(correct.data.item() / float(total)) + ' lr ' + str(lr))
+    # logging.info(
+    #     'ep ' + str(epoch) + ' tracc ' + str(correct.data.item() / float(total)) + ' lr ' + str(lr))
 
 
 def test(epoch):
@@ -273,7 +287,7 @@ def test(epoch):
             inputs, targets = inputs.cuda(), targets.cuda()
 
         inputs, targets = Variable(inputs, requires_grad=False), Variable(targets)
-        outputs = net(inputs)
+        outputs = net(inputs)[0]
 
         loss = criterion(outputs, targets)
         test_loss += loss.data.item()
@@ -287,41 +301,57 @@ def test(epoch):
 
     # Save checkpoint.
     acc = 100. * correct.data.item() / total
-    if acc > best_acc:
-        logging.info('Saving..')
-        state = {
-            'net': net.module if use_cuda else net,
-            'acc': acc,
-            'epoch': epoch,
-        }
-        if not os.path.isdir(savemodelpath):
-            os.mkdir(savemodelpath)
-        torch.save(state, savemodelpath + 'ckpt.t7')
-        best_acc = acc
-    logging.info('Saving..')
-    state = {
-        'net': net.module if use_cuda else net,
-        'acc': acc,
-        'epoch': epoch,
-    }
-    if not os.path.isdir(savemodelpath):
-        os.mkdir(savemodelpath)
-    if epoch % 50 == 0:
-        torch.save(state, savemodelpath + 'ckpt' + str(epoch) + '.t7')
-    # best_acc = acc
     tpr = 100. * TP.data.item() / (TP.data.item() + FN.data.item())
     fpr = 100. * FP.data.item() / (FP.data.item() + TN.data.item())
+    state = {
+        'net': net.module if use_cuda else net,
+        'epoch': epoch,
+        'eval':{
+            'acc': acc,
+            'tpr': tpr,
+            'fpr': fpr
+        }
+    }
 
-    print('teacc ' + str(acc) + ' bestacc ' + str(best_acc))
-    print('tpr ' + str(tpr) + ' fpr ' + str(fpr))
-    print('Time Taken: %d sec' % (time.time() - epoch_start_time))
-    logging.info(
-        'teacc ' + str(acc) + ' bestacc ' + str(best_acc))
-    logging.info(
-        'tpr ' + str(tpr) + ' fpr ' + str(fpr))
+    tu.add_test_ckpt(epoch, state)
+    # tu.add_new_checkpoint(state, epoch)
+
+    # if acc > best_acc:
+    #     logging.info('Saving..')
+    #     state = {
+    #         'net': net.module if use_cuda else net,
+    #         'acc': acc,
+    #         'epoch': epoch,
+    #     }
+    #     if not os.path.isdir(savemodelpath):
+    #         os.mkdir(savemodelpath)
+    #     torch.save(state, savemodelpath + 'ckpt.t7')
+    #     best_acc = acc
+    # logging.info('Saving..')
+    # state = {
+    #     'net': net.module if use_cuda else net,
+    #     'acc': acc,
+    #     'epoch': epoch,
+    # }
+    # if not os.path.isdir(savemodelpath):
+    #     os.mkdir(savemodelpath)
+    # #Save checkpoint after a fixed period
+    # tu.add_new_checkpoint(state, epoch)
+    # if epoch % 50 == 0:
+    #     torch.save(state, savemodelpath + 'ckpt' + str(epoch) + '.t7')
+    # best_acc = acc
+   
+
+    # print('teacc ' + str(acc) + ' bestacc ' + str(best_acc))
+    # print('tpr ' + str(tpr) + ' fpr ' + str(fpr))
+    # print('Time Taken: %d sec' % (time.time() - epoch_start_time))
+    # logging.info(
+    #     'teacc ' + str(acc) + ' bestacc ' + str(best_acc))
+    # logging.info(
+    #     'tpr ' + str(tpr) + ' fpr ' + str(fpr))
 
 
 if __name__ == '__main__':
-    for epoch in range(start_epoch + 1, start_epoch + args.num_epochs + 1):  # 200):
+    for epoch in range(start_epoch + 1, start_epoch + args.num_epochs + 1):
         train(epoch)
         test(epoch)

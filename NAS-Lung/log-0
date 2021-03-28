@@ -10,3 +10,2333 @@ INFO:root:==> Building model..
 INFO:root:args.savemodel : 
 INFO:root:
 Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:ep 1 tracc 0.5701754385964912 lr 0.0002
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:ep 1 tracc 0.5734649122807017 lr 0.0002
+INFO:root:Saving..
+INFO:root:Saving..
+INFO:root:teacc 61.95652173913044 bestacc 61.95652173913044
+INFO:root:tpr 88.46153846153847 fpr 72.5
+INFO:root:
+Epoch: 2
+INFO:root:ep 2 tracc 0.6831140350877193 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 56.52173913043478 bestacc 61.95652173913044
+INFO:root:tpr 100.0 fpr 100.0
+INFO:root:
+Epoch: 3
+INFO:root:ep 3 tracc 0.7236842105263158 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 60.869565217391305 bestacc 61.95652173913044
+INFO:root:tpr 100.0 fpr 90.0
+INFO:root:
+Epoch: 4
+INFO:root:ep 4 tracc 0.7642543859649122 lr 0.0002
+INFO:root:Saving..
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 75.0
+INFO:root:tpr 71.15384615384616 fpr 20.0
+INFO:root:
+Epoch: 5
+INFO:root:ep 5 tracc 0.768640350877193 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 56.52173913043478 bestacc 75.0
+INFO:root:tpr 100.0 fpr 100.0
+INFO:root:
+Epoch: 6
+INFO:root:ep 6 tracc 0.7796052631578947 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 75.0
+INFO:root:tpr 61.53846153846154 fpr 7.5
+INFO:root:
+Epoch: 7
+INFO:root:ep 7 tracc 0.8015350877192983 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 52.17391304347826 bestacc 75.0
+INFO:root:tpr 15.384615384615385 fpr 0.0
+INFO:root:
+Epoch: 8
+INFO:root:ep 8 tracc 0.7883771929824561 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 70.65217391304348 bestacc 75.0
+INFO:root:tpr 48.07692307692308 fpr 0.0
+INFO:root:
+Epoch: 9
+INFO:root:ep 9 tracc 0.7905701754385965 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 72.82608695652173 bestacc 75.0
+INFO:root:tpr 67.3076923076923 fpr 20.0
+INFO:root:
+Epoch: 10
+INFO:root:ep 10 tracc 0.8212719298245614 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 72.82608695652173 bestacc 75.0
+INFO:root:tpr 63.46153846153846 fpr 15.0
+INFO:root:
+Epoch: 11
+INFO:root:ep 11 tracc 0.7905701754385965 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 68.47826086956522 bestacc 75.0
+INFO:root:tpr 44.23076923076923 fpr 0.0
+INFO:root:
+Epoch: 12
+INFO:root:ep 12 tracc 0.8234649122807017 lr 0.0002
+INFO:root:Saving..
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 78.26086956521739
+INFO:root:tpr 69.23076923076923 fpr 10.0
+INFO:root:
+Epoch: 13
+INFO:root:ep 13 tracc 0.8103070175438597 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 78.26086956521739
+INFO:root:tpr 69.23076923076923 fpr 17.5
+INFO:root:
+Epoch: 14
+INFO:root:ep 14 tracc 0.8179824561403509 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 78.26086956521739
+INFO:root:tpr 69.23076923076923 fpr 10.0
+INFO:root:
+Epoch: 15
+INFO:root:ep 15 tracc 0.8135964912280702 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 78.26086956521739
+INFO:root:tpr 61.53846153846154 fpr 7.5
+INFO:root:
+Epoch: 16
+INFO:root:ep 16 tracc 0.8300438596491229 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 78.26086956521739
+INFO:root:tpr 80.76923076923077 fpr 27.5
+INFO:root:
+Epoch: 17
+INFO:root:ep 17 tracc 0.8168859649122807 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 58.69565217391305 bestacc 78.26086956521739
+INFO:root:tpr 98.07692307692308 fpr 92.5
+INFO:root:
+Epoch: 18
+INFO:root:ep 18 tracc 0.8168859649122807 lr 0.0002
+INFO:root:Saving..
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 80.43478260869566
+INFO:root:tpr 78.84615384615384 fpr 17.5
+INFO:root:
+Epoch: 19
+INFO:root:ep 19 tracc 0.8267543859649122 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 80.43478260869566
+INFO:root:tpr 63.46153846153846 fpr 2.5
+INFO:root:
+Epoch: 20
+INFO:root:ep 20 tracc 0.8256578947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 80.43478260869566
+INFO:root:tpr 78.84615384615384 fpr 25.0
+INFO:root:
+Epoch: 21
+INFO:root:ep 21 tracc 0.8366228070175439 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 80.43478260869566
+INFO:root:tpr 65.38461538461539 fpr 10.0
+INFO:root:
+Epoch: 22
+INFO:root:ep 22 tracc 0.8125 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 80.43478260869566
+INFO:root:tpr 75.0 fpr 20.0
+INFO:root:
+Epoch: 23
+INFO:root:ep 23 tracc 0.8442982456140351 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 80.43478260869566
+INFO:root:tpr 78.84615384615384 fpr 22.5
+INFO:root:
+Epoch: 24
+INFO:root:ep 24 tracc 0.8322368421052632 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 71.73913043478261 bestacc 80.43478260869566
+INFO:root:tpr 67.3076923076923 fpr 22.5
+INFO:root:
+Epoch: 25
+INFO:root:ep 25 tracc 0.8453947368421053 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 72.82608695652173 bestacc 80.43478260869566
+INFO:root:tpr 55.76923076923077 fpr 5.0
+INFO:root:
+Epoch: 26
+INFO:root:ep 26 tracc 0.8322368421052632 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 80.43478260869566
+INFO:root:tpr 59.61538461538461 fpr 5.0
+INFO:root:
+Epoch: 27
+INFO:root:ep 27 tracc 0.8475877192982456 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 80.43478260869566
+INFO:root:tpr 80.76923076923077 fpr 30.0
+INFO:root:
+Epoch: 28
+INFO:root:ep 28 tracc 0.8355263157894737 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 80.43478260869566
+INFO:root:tpr 63.46153846153846 fpr 2.5
+INFO:root:
+Epoch: 29
+INFO:root:ep 29 tracc 0.8333333333333334 lr 0.0002
+INFO:root:Saving..
+INFO:root:Saving..
+INFO:root:teacc 84.78260869565217 bestacc 84.78260869565217
+INFO:root:tpr 80.76923076923077 fpr 10.0
+INFO:root:
+Epoch: 30
+INFO:root:ep 30 tracc 0.8432017543859649 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 65.38461538461539 fpr 12.5
+INFO:root:
+Epoch: 31
+INFO:root:ep 31 tracc 0.8552631578947368 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 15.0
+INFO:root:
+Epoch: 32
+INFO:root:ep 32 tracc 0.8421052631578947 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 84.61538461538461 fpr 25.0
+INFO:root:
+Epoch: 33
+INFO:root:ep 33 tracc 0.8530701754385965 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 20.0
+INFO:root:
+Epoch: 34
+INFO:root:ep 34 tracc 0.8486842105263158 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 61.53846153846154 fpr 2.5
+INFO:root:
+Epoch: 35
+INFO:root:ep 35 tracc 0.8585526315789473 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 59.61538461538461 fpr 7.5
+INFO:root:
+Epoch: 36
+INFO:root:ep 36 tracc 0.8607456140350878 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 22.5
+INFO:root:
+Epoch: 37
+INFO:root:ep 37 tracc 0.8519736842105263 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 10.0
+INFO:root:
+Epoch: 38
+INFO:root:ep 38 tracc 0.8607456140350878 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 61.53846153846154 fpr 5.0
+INFO:root:
+Epoch: 39
+INFO:root:ep 39 tracc 0.8596491228070176 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 20.0
+INFO:root:
+Epoch: 40
+INFO:root:ep 40 tracc 0.8552631578947368 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 65.38461538461539 fpr 15.0
+INFO:root:
+Epoch: 41
+INFO:root:ep 41 tracc 0.8574561403508771 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 72.82608695652173 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 22.5
+INFO:root:
+Epoch: 42
+INFO:root:ep 42 tracc 0.8541666666666666 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 22.5
+INFO:root:
+Epoch: 43
+INFO:root:ep 43 tracc 0.8486842105263158 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 78.84615384615384 fpr 25.0
+INFO:root:
+Epoch: 44
+INFO:root:ep 44 tracc 0.8442982456140351 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 17.5
+INFO:root:
+Epoch: 45
+INFO:root:ep 45 tracc 0.8673245614035088 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 12.5
+INFO:root:
+Epoch: 46
+INFO:root:ep 46 tracc 0.8607456140350878 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 57.69230769230769 fpr 0.0
+INFO:root:
+Epoch: 47
+INFO:root:ep 47 tracc 0.8552631578947368 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 63.46153846153846 fpr 5.0
+INFO:root:
+Epoch: 48
+INFO:root:ep 48 tracc 0.8530701754385965 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 20.0
+INFO:root:
+Epoch: 49
+INFO:root:ep 49 tracc 0.8717105263157895 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 10.0
+INFO:root:
+Epoch: 50
+INFO:root:ep 50 tracc 0.868421052631579 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 72.82608695652173 bestacc 84.78260869565217
+INFO:root:tpr 61.53846153846154 fpr 12.5
+INFO:root:
+Epoch: 51
+INFO:root:ep 51 tracc 0.8552631578947368 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 78.84615384615384 fpr 20.0
+INFO:root:
+Epoch: 52
+INFO:root:ep 52 tracc 0.8651315789473685 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 59.61538461538461 fpr 0.0
+INFO:root:
+Epoch: 53
+INFO:root:ep 53 tracc 0.8695175438596491 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 72.82608695652173 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 25.0
+INFO:root:
+Epoch: 54
+INFO:root:ep 54 tracc 0.856359649122807 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 57.69230769230769 fpr 5.0
+INFO:root:
+Epoch: 55
+INFO:root:ep 55 tracc 0.8728070175438597 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 5.0
+INFO:root:
+Epoch: 56
+INFO:root:ep 56 tracc 0.8486842105263158 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 12.5
+INFO:root:
+Epoch: 57
+INFO:root:ep 57 tracc 0.875 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 84.61538461538461 fpr 32.5
+INFO:root:
+Epoch: 58
+INFO:root:ep 58 tracc 0.8793859649122807 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 63.46153846153846 fpr 2.5
+INFO:root:
+Epoch: 59
+INFO:root:ep 59 tracc 0.881578947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 82.6086956521739 bestacc 84.78260869565217
+INFO:root:tpr 84.61538461538461 fpr 20.0
+INFO:root:
+Epoch: 60
+INFO:root:ep 60 tracc 0.8673245614035088 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 7.5
+INFO:root:
+Epoch: 61
+INFO:root:ep 61 tracc 0.868421052631579 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 5.0
+INFO:root:
+Epoch: 62
+INFO:root:ep 62 tracc 0.8793859649122807 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 65.38461538461539 fpr 7.5
+INFO:root:
+Epoch: 63
+INFO:root:ep 63 tracc 0.8771929824561403 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 17.5
+INFO:root:
+Epoch: 64
+INFO:root:ep 64 tracc 0.8782894736842105 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 15.0
+INFO:root:
+Epoch: 65
+INFO:root:ep 65 tracc 0.8859649122807017 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 12.5
+INFO:root:
+Epoch: 66
+INFO:root:ep 66 tracc 0.875 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 12.5
+INFO:root:
+Epoch: 67
+INFO:root:ep 67 tracc 0.8848684210526315 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 20.0
+INFO:root:
+Epoch: 68
+INFO:root:ep 68 tracc 0.8870614035087719 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 70.65217391304348 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 27.5
+INFO:root:
+Epoch: 69
+INFO:root:ep 69 tracc 0.8881578947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 78.84615384615384 fpr 22.5
+INFO:root:
+Epoch: 70
+INFO:root:ep 70 tracc 0.8947368421052632 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 72.82608695652173 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 30.0
+INFO:root:
+Epoch: 71
+INFO:root:ep 71 tracc 0.8870614035087719 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 12.5
+INFO:root:
+Epoch: 72
+INFO:root:ep 72 tracc 0.8881578947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 81.52173913043478 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 5.0
+INFO:root:
+Epoch: 73
+INFO:root:ep 73 tracc 0.893640350877193 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 7.5
+INFO:root:
+Epoch: 74
+INFO:root:ep 74 tracc 0.8848684210526315 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 80.76923076923077 fpr 20.0
+INFO:root:
+Epoch: 75
+INFO:root:ep 75 tracc 0.8925438596491229 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 84.61538461538461 fpr 32.5
+INFO:root:
+Epoch: 76
+INFO:root:ep 76 tracc 0.8859649122807017 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 7.5
+INFO:root:
+Epoch: 77
+INFO:root:ep 77 tracc 0.9013157894736842 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 5.0
+INFO:root:
+Epoch: 78
+INFO:root:ep 78 tracc 0.8958333333333334 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 78.84615384615384 fpr 20.0
+INFO:root:
+Epoch: 79
+INFO:root:ep 79 tracc 0.8958333333333334 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 88.46153846153847 fpr 30.0
+INFO:root:
+Epoch: 80
+INFO:root:ep 80 tracc 0.9013157894736842 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 12.5
+INFO:root:
+Epoch: 81
+INFO:root:ep 81 tracc 0.8991228070175439 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 15.0
+INFO:root:
+Epoch: 82
+INFO:root:ep 82 tracc 0.8991228070175439 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 63.46153846153846 fpr 2.5
+INFO:root:
+Epoch: 83
+INFO:root:ep 83 tracc 0.8848684210526315 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 30.0
+INFO:root:
+Epoch: 84
+INFO:root:ep 84 tracc 0.8969298245614035 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 10.0
+INFO:root:
+Epoch: 85
+INFO:root:ep 85 tracc 0.8969298245614035 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 17.5
+INFO:root:
+Epoch: 86
+INFO:root:ep 86 tracc 0.8881578947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 17.5
+INFO:root:
+Epoch: 87
+INFO:root:ep 87 tracc 0.9002192982456141 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 10.0
+INFO:root:
+Epoch: 88
+INFO:root:ep 88 tracc 0.8991228070175439 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 17.5
+INFO:root:
+Epoch: 89
+INFO:root:ep 89 tracc 0.9078947368421053 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 12.5
+INFO:root:
+Epoch: 90
+INFO:root:ep 90 tracc 0.8925438596491229 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 22.5
+INFO:root:
+Epoch: 91
+INFO:root:ep 91 tracc 0.9100877192982456 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 17.5
+INFO:root:
+Epoch: 92
+INFO:root:ep 92 tracc 0.9024122807017544 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 20.0
+INFO:root:
+Epoch: 93
+INFO:root:ep 93 tracc 0.9111842105263158 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 17.5
+INFO:root:
+Epoch: 94
+INFO:root:ep 94 tracc 0.8969298245614035 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 59.61538461538461 fpr 2.5
+INFO:root:
+Epoch: 95
+INFO:root:ep 95 tracc 0.9057017543859649 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 81.52173913043478 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 12.5
+INFO:root:
+Epoch: 96
+INFO:root:ep 96 tracc 0.9111842105263158 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 15.0
+INFO:root:
+Epoch: 97
+INFO:root:ep 97 tracc 0.9254385964912281 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 82.6086956521739 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 10.0
+INFO:root:
+Epoch: 98
+INFO:root:ep 98 tracc 0.8947368421052632 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 7.5
+INFO:root:
+Epoch: 99
+INFO:root:ep 99 tracc 0.9155701754385965 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 78.84615384615384 fpr 27.5
+INFO:root:
+Epoch: 100
+INFO:root:ep 100 tracc 0.9078947368421053 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 12.5
+INFO:root:
+Epoch: 101
+INFO:root:ep 101 tracc 0.9265350877192983 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 82.6923076923077 fpr 27.5
+INFO:root:
+Epoch: 102
+INFO:root:ep 102 tracc 0.9067982456140351 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 20.0
+INFO:root:
+Epoch: 103
+INFO:root:ep 103 tracc 0.9199561403508771 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 20.0
+INFO:root:
+Epoch: 104
+INFO:root:ep 104 tracc 0.9177631578947368 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 15.0
+INFO:root:
+Epoch: 105
+INFO:root:ep 105 tracc 0.9144736842105263 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 20.0
+INFO:root:
+Epoch: 106
+INFO:root:ep 106 tracc 0.9155701754385965 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 17.5
+INFO:root:
+Epoch: 107
+INFO:root:ep 107 tracc 0.9067982456140351 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 20.0
+INFO:root:
+Epoch: 108
+INFO:root:ep 108 tracc 0.9166666666666666 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 12.5
+INFO:root:
+Epoch: 109
+INFO:root:ep 109 tracc 0.9166666666666666 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 7.5
+INFO:root:
+Epoch: 110
+INFO:root:ep 110 tracc 0.918859649122807 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 15.0
+INFO:root:
+Epoch: 111
+INFO:root:ep 111 tracc 0.9243421052631579 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 69.56521739130434 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 27.5
+INFO:root:
+Epoch: 112
+INFO:root:ep 112 tracc 0.9221491228070176 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 15.0
+INFO:root:
+Epoch: 113
+INFO:root:ep 113 tracc 0.9177631578947368 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 15.0
+INFO:root:
+Epoch: 114
+INFO:root:ep 114 tracc 0.9396929824561403 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 10.0
+INFO:root:
+Epoch: 115
+INFO:root:ep 115 tracc 0.9298245614035088 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 15.0
+INFO:root:
+Epoch: 116
+INFO:root:ep 116 tracc 0.9210526315789473 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 82.6086956521739 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 7.5
+INFO:root:
+Epoch: 117
+INFO:root:ep 117 tracc 0.9254385964912281 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 17.5
+INFO:root:
+Epoch: 118
+INFO:root:ep 118 tracc 0.9375 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 20.0
+INFO:root:
+Epoch: 119
+INFO:root:ep 119 tracc 0.9364035087719298 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 22.5
+INFO:root:
+Epoch: 120
+INFO:root:ep 120 tracc 0.918859649122807 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 12.5
+INFO:root:
+Epoch: 121
+INFO:root:ep 121 tracc 0.9287280701754386 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 10.0
+INFO:root:
+Epoch: 122
+INFO:root:ep 122 tracc 0.9265350877192983 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 69.56521739130434 bestacc 84.78260869565217
+INFO:root:tpr 51.92307692307692 fpr 7.5
+INFO:root:
+Epoch: 123
+INFO:root:ep 123 tracc 0.9342105263157895 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 12.5
+INFO:root:
+Epoch: 124
+INFO:root:ep 124 tracc 0.9407894736842105 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 10.0
+INFO:root:
+Epoch: 125
+INFO:root:ep 125 tracc 0.9320175438596491 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 63.46153846153846 fpr 7.5
+INFO:root:
+Epoch: 126
+INFO:root:ep 126 tracc 0.9451754385964912 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 22.5
+INFO:root:
+Epoch: 127
+INFO:root:ep 127 tracc 0.9320175438596491 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 20.0
+INFO:root:
+Epoch: 128
+INFO:root:ep 128 tracc 0.9364035087719298 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 20.0
+INFO:root:
+Epoch: 129
+INFO:root:ep 129 tracc 0.9396929824561403 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 10.0
+INFO:root:
+Epoch: 130
+INFO:root:ep 130 tracc 0.9385964912280702 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 20.0
+INFO:root:
+Epoch: 131
+INFO:root:ep 131 tracc 0.9484649122807017 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 17.5
+INFO:root:
+Epoch: 132
+INFO:root:ep 132 tracc 0.9539473684210527 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 68.47826086956522 bestacc 84.78260869565217
+INFO:root:tpr 48.07692307692308 fpr 5.0
+INFO:root:
+Epoch: 133
+INFO:root:ep 133 tracc 0.9484649122807017 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 20.0
+INFO:root:
+Epoch: 134
+INFO:root:ep 134 tracc 0.9364035087719298 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 63.46153846153846 fpr 7.5
+INFO:root:
+Epoch: 135
+INFO:root:ep 135 tracc 0.9385964912280702 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 10.0
+INFO:root:
+Epoch: 136
+INFO:root:ep 136 tracc 0.944078947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 65.38461538461539 fpr 12.5
+INFO:root:
+Epoch: 137
+INFO:root:ep 137 tracc 0.9451754385964912 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 82.6086956521739 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 10.0
+INFO:root:
+Epoch: 138
+INFO:root:ep 138 tracc 0.9375 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 7.5
+INFO:root:
+Epoch: 139
+INFO:root:ep 139 tracc 0.9353070175438597 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 80.76923076923077 fpr 20.0
+INFO:root:
+Epoch: 140
+INFO:root:ep 140 tracc 0.9473684210526315 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 80.76923076923077 fpr 30.0
+INFO:root:
+Epoch: 141
+INFO:root:ep 141 tracc 0.9396929824561403 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 7.5
+INFO:root:
+Epoch: 142
+INFO:root:ep 142 tracc 0.9506578947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 7.5
+INFO:root:
+Epoch: 143
+INFO:root:ep 143 tracc 0.9451754385964912 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 15.0
+INFO:root:
+Epoch: 144
+INFO:root:ep 144 tracc 0.9418859649122807 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 15.0
+INFO:root:
+Epoch: 145
+INFO:root:ep 145 tracc 0.9572368421052632 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 59.61538461538461 fpr 5.0
+INFO:root:
+Epoch: 146
+INFO:root:ep 146 tracc 0.9572368421052632 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 12.5
+INFO:root:
+Epoch: 147
+INFO:root:ep 147 tracc 0.9473684210526315 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 20.0
+INFO:root:
+Epoch: 148
+INFO:root:ep 148 tracc 0.9517543859649122 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 22.5
+INFO:root:
+Epoch: 149
+INFO:root:ep 149 tracc 0.9407894736842105 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 20.0
+INFO:root:
+Epoch: 150
+INFO:root:ep 150 tracc 0.9605263157894737 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 15.0
+INFO:root:
+Epoch: 151
+INFO:root:ep 151 tracc 0.9506578947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 15.0
+INFO:root:
+Epoch: 152
+INFO:root:ep 152 tracc 0.9572368421052632 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 12.5
+INFO:root:
+Epoch: 153
+INFO:root:ep 153 tracc 0.9473684210526315 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 61.53846153846154 fpr 7.5
+INFO:root:
+Epoch: 154
+INFO:root:ep 154 tracc 0.9429824561403509 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 65.38461538461539 fpr 12.5
+INFO:root:
+Epoch: 155
+INFO:root:ep 155 tracc 0.930921052631579 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 12.5
+INFO:root:
+Epoch: 156
+INFO:root:ep 156 tracc 0.9528508771929824 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 17.5
+INFO:root:
+Epoch: 157
+INFO:root:ep 157 tracc 0.9451754385964912 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 17.5
+INFO:root:
+Epoch: 158
+INFO:root:ep 158 tracc 0.9649122807017544 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 20.0
+INFO:root:
+Epoch: 159
+INFO:root:ep 159 tracc 0.9627192982456141 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 78.84615384615384 fpr 30.0
+INFO:root:
+Epoch: 160
+INFO:root:ep 160 tracc 0.9539473684210527 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 22.5
+INFO:root:
+Epoch: 161
+INFO:root:ep 161 tracc 0.9506578947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 10.0
+INFO:root:
+Epoch: 162
+INFO:root:ep 162 tracc 0.9616228070175439 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 17.5
+INFO:root:
+Epoch: 163
+INFO:root:ep 163 tracc 0.9594298245614035 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 10.0
+INFO:root:
+Epoch: 164
+INFO:root:ep 164 tracc 0.9484649122807017 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 65.38461538461539 fpr 10.0
+INFO:root:
+Epoch: 165
+INFO:root:ep 165 tracc 0.9682017543859649 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 20.0
+INFO:root:
+Epoch: 166
+INFO:root:ep 166 tracc 0.956140350877193 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 17.5
+INFO:root:
+Epoch: 167
+INFO:root:ep 167 tracc 0.9506578947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 10.0
+INFO:root:
+Epoch: 168
+INFO:root:ep 168 tracc 0.9572368421052632 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 17.5
+INFO:root:
+Epoch: 169
+INFO:root:ep 169 tracc 0.9517543859649122 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 15.0
+INFO:root:
+Epoch: 170
+INFO:root:ep 170 tracc 0.9649122807017544 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 12.5
+INFO:root:
+Epoch: 171
+INFO:root:ep 171 tracc 0.9649122807017544 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 15.0
+INFO:root:
+Epoch: 172
+INFO:root:ep 172 tracc 0.9692982456140351 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 27.5
+INFO:root:
+Epoch: 173
+INFO:root:ep 173 tracc 0.9462719298245614 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 7.5
+INFO:root:
+Epoch: 174
+INFO:root:ep 174 tracc 0.9583333333333334 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 65.38461538461539 fpr 0.0
+INFO:root:
+Epoch: 175
+INFO:root:ep 175 tracc 0.9605263157894737 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 10.0
+INFO:root:
+Epoch: 176
+INFO:root:ep 176 tracc 0.9682017543859649 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 12.5
+INFO:root:
+Epoch: 177
+INFO:root:ep 177 tracc 0.9692982456140351 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 80.43478260869566 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 15.0
+INFO:root:
+Epoch: 178
+INFO:root:ep 178 tracc 0.9539473684210527 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 81.52173913043478 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 12.5
+INFO:root:
+Epoch: 179
+INFO:root:ep 179 tracc 0.9473684210526315 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 12.5
+INFO:root:
+Epoch: 180
+INFO:root:ep 180 tracc 0.9572368421052632 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 17.5
+INFO:root:
+Epoch: 181
+INFO:root:ep 181 tracc 0.9692982456140351 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 12.5
+INFO:root:
+Epoch: 182
+INFO:root:ep 182 tracc 0.9638157894736842 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 15.0
+INFO:root:
+Epoch: 183
+INFO:root:ep 183 tracc 0.9506578947368421 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 17.5
+INFO:root:
+Epoch: 184
+INFO:root:ep 184 tracc 0.9671052631578947 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 15.0
+INFO:root:
+Epoch: 185
+INFO:root:ep 185 tracc 0.9736842105263158 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 15.0
+INFO:root:
+Epoch: 186
+INFO:root:ep 186 tracc 0.9682017543859649 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 17.5
+INFO:root:
+Epoch: 187
+INFO:root:ep 187 tracc 0.9583333333333334 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 20.0
+INFO:root:
+Epoch: 188
+INFO:root:ep 188 tracc 0.9758771929824561 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 72.82608695652173 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 20.0
+INFO:root:
+Epoch: 189
+INFO:root:ep 189 tracc 0.9605263157894737 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 65.38461538461539 fpr 12.5
+INFO:root:
+Epoch: 190
+INFO:root:ep 190 tracc 0.9703947368421053 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 76.08695652173913 bestacc 84.78260869565217
+INFO:root:tpr 69.23076923076923 fpr 15.0
+INFO:root:
+Epoch: 191
+INFO:root:ep 191 tracc 0.9583333333333334 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 73.07692307692308 fpr 15.0
+INFO:root:
+Epoch: 192
+INFO:root:ep 192 tracc 0.9703947368421053 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 73.91304347826087 bestacc 84.78260869565217
+INFO:root:tpr 63.46153846153846 fpr 12.5
+INFO:root:
+Epoch: 193
+INFO:root:ep 193 tracc 0.9660087719298246 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 79.34782608695652 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 17.5
+INFO:root:
+Epoch: 194
+INFO:root:ep 194 tracc 0.9692982456140351 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 75.0 bestacc 84.78260869565217
+INFO:root:tpr 67.3076923076923 fpr 15.0
+INFO:root:
+Epoch: 195
+INFO:root:ep 195 tracc 0.9714912280701754 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 71.15384615384616 fpr 15.0
+INFO:root:
+Epoch: 196
+INFO:root:ep 196 tracc 0.9605263157894737 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 17.5
+INFO:root:
+Epoch: 197
+INFO:root:ep 197 tracc 0.9649122807017544 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 77.17391304347827 bestacc 84.78260869565217
+INFO:root:tpr 75.0 fpr 20.0
+INFO:root:
+Epoch: 198
+INFO:root:ep 198 tracc 0.9517543859649122 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 70.65217391304348 bestacc 84.78260869565217
+INFO:root:tpr 59.61538461538461 fpr 15.0
+INFO:root:
+Epoch: 199
+INFO:root:ep 199 tracc 0.9638157894736842 lr 0.0002
+INFO:root:Saving..
+INFO:root:teacc 78.26086956521739 bestacc 84.78260869565217
+INFO:root:tpr 76.92307692307692 fpr 20.0
+INFO:root:
+Epoch: 200
+INFO:root:ep 200 tracc 0.9594298245614035 lr 0.0002
+INFO:root:Saving..
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:Epoch 1:{'acc': 0.5800438596491229, 'lr': 0.0002, 'loss': 86.71923214197159}
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:Epoch 1:{'acc': 0.5570175438596491, 'lr': 0.0002, 'loss': 89.25527763366699}
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:Epoch 1:{'acc': 0.5416666666666666, 'lr': 0.0002, 'loss': 100.98926442861557}
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:Epoch 1:{'acc': 0.5756578947368421, 'lr': 0.0002, 'loss': 86.81098890304565}
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:Epoch 1:{'acc': 0.5866228070175439, 'lr': 0.0002, 'loss': 95.30040299892426}
+INFO:root:Epoch 1:{'net': ConvRes(
+  (conv1): Sequential(
+    (0): Conv3d(1, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+    (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+  )
+  (conv2): Sequential(
+    (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+    (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+  )
+  (first_cbam): ResCBAMLayer(
+    (ch_AvgPool): AvgPool3d(kernel_size=32, stride=32, padding=0)
+    (ch_MaxPool): MaxPool3d(kernel_size=32, stride=32, padding=0, dilation=1, ceil_mode=False)
+    (ch_Linear1): Linear(in_features=4, out_features=1, bias=False)
+    (ch_Linear2): Linear(in_features=1, out_features=4, bias=False)
+    (ch_Softmax): Softmax(dim=1)
+    (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+    (sp_Softmax): Softmax(dim=1)
+    (sp_sigmoid): Sigmoid()
+  )
+  (layers): Sequential(
+    (0): Sequential(
+      (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (1): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(4, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(4, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (2): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (3): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (4): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=16, stride=16, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=16, stride=16, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=64, out_features=16, bias=False)
+      (ch_Linear2): Linear(in_features=16, out_features=64, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+    (5): Sequential(
+      (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (6): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (7): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (8): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(128, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (9): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=8, stride=8, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=8, stride=8, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=256, out_features=64, bias=False)
+      (ch_Linear2): Linear(in_features=64, out_features=256, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+    (10): Sequential(
+      (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (11): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (12): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (13): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (14): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (15): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=4, stride=4, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=4, stride=4, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=512, out_features=128, bias=False)
+      (ch_Linear2): Linear(in_features=128, out_features=512, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+  )
+  (avg_pooling): AvgPool3d(kernel_size=4, stride=4, padding=0)
+  (fc): AngleLinear()
+), 'acc': 43.47826086956522, 'tpr': 0.0, 'fpr': 0.0, 'epoch': 1, 'best_acc': 43.47826086956522}
+INFO:root:
+Epoch: 2
+INFO:root:Epoch 2:{'acc': 0.7017543859649122, 'lr': 0.0002, 'loss': 66.55660825967789}
+INFO:root:Epoch 2:{'net': ConvRes(
+  (conv1): Sequential(
+    (0): Conv3d(1, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+    (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+  )
+  (conv2): Sequential(
+    (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+    (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+  )
+  (first_cbam): ResCBAMLayer(
+    (ch_AvgPool): AvgPool3d(kernel_size=32, stride=32, padding=0)
+    (ch_MaxPool): MaxPool3d(kernel_size=32, stride=32, padding=0, dilation=1, ceil_mode=False)
+    (ch_Linear1): Linear(in_features=4, out_features=1, bias=False)
+    (ch_Linear2): Linear(in_features=1, out_features=4, bias=False)
+    (ch_Softmax): Softmax(dim=1)
+    (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+    (sp_Softmax): Softmax(dim=1)
+    (sp_sigmoid): Sigmoid()
+  )
+  (layers): Sequential(
+    (0): Sequential(
+      (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (1): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(4, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(4, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (2): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (3): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (4): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=16, stride=16, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=16, stride=16, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=64, out_features=16, bias=False)
+      (ch_Linear2): Linear(in_features=16, out_features=64, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+    (5): Sequential(
+      (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (6): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (7): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (8): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(128, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (9): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=8, stride=8, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=8, stride=8, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=256, out_features=64, bias=False)
+      (ch_Linear2): Linear(in_features=64, out_features=256, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+    (10): Sequential(
+      (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (11): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (12): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (13): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (14): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (15): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=4, stride=4, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=4, stride=4, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=512, out_features=128, bias=False)
+      (ch_Linear2): Linear(in_features=128, out_features=512, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+  )
+  (avg_pooling): AvgPool3d(kernel_size=4, stride=4, padding=0)
+  (fc): AngleLinear()
+), 'acc': 64.1304347826087, 'tpr': 51.92307692307692, 'fpr': 20.0, 'epoch': 2, 'best_acc': 64.1304347826087}
+INFO:root:
+Epoch: 3
+INFO:root:Epoch 3:{'acc': 0.7171052631578947, 'lr': 0.0002, 'loss': 64.86882701516151}
+INFO:root:Epoch 3:{'net': ConvRes(
+  (conv1): Sequential(
+    (0): Conv3d(1, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+    (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+  )
+  (conv2): Sequential(
+    (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+    (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+  )
+  (first_cbam): ResCBAMLayer(
+    (ch_AvgPool): AvgPool3d(kernel_size=32, stride=32, padding=0)
+    (ch_MaxPool): MaxPool3d(kernel_size=32, stride=32, padding=0, dilation=1, ceil_mode=False)
+    (ch_Linear1): Linear(in_features=4, out_features=1, bias=False)
+    (ch_Linear2): Linear(in_features=1, out_features=4, bias=False)
+    (ch_Softmax): Softmax(dim=1)
+    (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+    (sp_Softmax): Softmax(dim=1)
+    (sp_sigmoid): Sigmoid()
+  )
+  (layers): Sequential(
+    (0): Sequential(
+      (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (1): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(4, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(4, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (2): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (3): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (4): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=16, stride=16, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=16, stride=16, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=64, out_features=16, bias=False)
+      (ch_Linear2): Linear(in_features=16, out_features=64, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+    (5): Sequential(
+      (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (6): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (7): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (8): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(128, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (9): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=8, stride=8, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=8, stride=8, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=256, out_features=64, bias=False)
+      (ch_Linear2): Linear(in_features=64, out_features=256, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+    (10): Sequential(
+      (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (11): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (12): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (13): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (14): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (15): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=4, stride=4, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=4, stride=4, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=512, out_features=128, bias=False)
+      (ch_Linear2): Linear(in_features=128, out_features=512, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+  )
+  (avg_pooling): AvgPool3d(kernel_size=4, stride=4, padding=0)
+  (fc): AngleLinear()
+), 'acc': 56.52173913043478, 'tpr': 100.0, 'fpr': 100.0, 'epoch': 3, 'best_acc': 64.1304347826087}
+INFO:root:
+Epoch: 4
+INFO:root:Epoch 4:{'acc': 0.7258771929824561, 'lr': 0.0002, 'loss': 63.73355592787266}
+INFO:root:Epoch 4:{'net': ConvRes(
+  (conv1): Sequential(
+    (0): Conv3d(1, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+    (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+  )
+  (conv2): Sequential(
+    (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+    (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+  )
+  (first_cbam): ResCBAMLayer(
+    (ch_AvgPool): AvgPool3d(kernel_size=32, stride=32, padding=0)
+    (ch_MaxPool): MaxPool3d(kernel_size=32, stride=32, padding=0, dilation=1, ceil_mode=False)
+    (ch_Linear1): Linear(in_features=4, out_features=1, bias=False)
+    (ch_Linear2): Linear(in_features=1, out_features=4, bias=False)
+    (ch_Softmax): Softmax(dim=1)
+    (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+    (sp_Softmax): Softmax(dim=1)
+    (sp_sigmoid): Sigmoid()
+  )
+  (layers): Sequential(
+    (0): Sequential(
+      (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (1): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(4, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(4, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (2): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (3): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 64, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (4): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=16, stride=16, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=16, stride=16, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=64, out_features=16, bias=False)
+      (ch_Linear2): Linear(in_features=16, out_features=64, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+    (5): Sequential(
+      (0): Conv3d(64, 64, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (6): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(64, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(64, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (7): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(128, 128, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (8): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(128, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(128, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (9): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=8, stride=8, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=8, stride=8, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=256, out_features=64, bias=False)
+      (ch_Linear2): Linear(in_features=64, out_features=256, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+    (10): Sequential(
+      (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (11): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (12): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (13): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 256, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (14): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(256, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(512, 512, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(256, 512, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (15): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=4, stride=4, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=4, stride=4, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=512, out_features=128, bias=False)
+      (ch_Linear2): Linear(in_features=128, out_features=512, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+  )
+  (avg_pooling): AvgPool3d(kernel_size=4, stride=4, padding=0)
+  (fc): AngleLinear()
+), 'acc': 73.91304347826087, 'tpr': 57.69230769230769, 'fpr': 5.0, 'epoch': 4, 'best_acc': 73.91304347826087}
+INFO:root:
+Epoch: 5
+INFO:root:mean 178.83227827824444 std 50.05896544303765
+INFO:root:==> Preparing data..
+INFO:root:==> Building model..
+INFO:root:args.savemodel : 
+INFO:root:
+Epoch: 1
+INFO:root:Epoch 1:{'acc': 0.5910087719298246, 'lr': 0.0002, 'loss': 90.37335830926895}
+INFO:root:Epoch 1:{'acc': 43.47826086956522, 'tpr': 0.0, 'fpr': 0.0, 'best_acc': 43.47826086956522}
+INFO:root:
+Epoch: 2
+INFO:root:Epoch 2:{'acc': 0.6666666666666666, 'lr': 0.0002, 'loss': 70.78570488095284}
+INFO:root:Epoch 2:{'acc': 63.04347826086956, 'tpr': 44.23076923076923, 'fpr': 12.5, 'best_acc': 63.04347826086956}
+INFO:root:
+Epoch: 3
+INFO:root:Epoch 3:{'acc': 0.7203947368421053, 'lr': 0.0002, 'loss': 64.0860977768898}
+INFO:root:Epoch 3:{'acc': 55.43478260869565, 'tpr': 21.153846153846153, 'fpr': 0.0, 'best_acc': 63.04347826086956}
+INFO:root:
+Epoch: 4

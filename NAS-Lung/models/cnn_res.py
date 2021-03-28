@@ -22,6 +22,7 @@ class ResCBAMLayer(nn.Module):
         self.sp_Conv = nn.Conv3d(2, 1, kernel_size=3, stride=1, padding=1, bias=False)
         self.sp_Softmax = nn.Softmax(1)
         self.sp_sigmoid = nn.Sigmoid()
+    
     def forward(self, x):
         x_ch_avg_pool = self.ch_AvgPool(x).view(x.size(0), -1)
         x_ch_max_pool = self.ch_MaxPool(x).view(x.size(0), -1)
