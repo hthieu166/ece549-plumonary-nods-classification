@@ -54,24 +54,24 @@ class TrainUtils():
         self.log_tensorboard("loss", info_dict["loss"], n_epoch, mode = "train")
         self.log(self.__eval_to_str(n_epoch, info_dict, mode = "train"))
 
-    def add_test_ckpt(self, n_epoch, state):
-        info_dict = state["eval"]
+    def add_test_ckpt(self, n_epoch, state_dict):
+        eval_dict = state_dict["eval"]
         is_better = self.model_selection_criteria(info_dict["acc"], self.best_acc)
         if (is_better):
-            self.best_acc = info_dict["acc"]
+            self.best_acc = eval_dict["acc"]
         #Append best_acc, epoch to eval dict
-        info_dict["best_acc"] = self.best_acc
-        self.log_tensorboard("acc", info_dict["acc"], n_epoch, mode = "test")
-        self.log_tensorboard("tpr", info_dict["tpr"], n_epoch, mode = "test")
-        self.log_tensorboard("fpr", info_dict["fpr"], n_epoch, mode = "test")
-        self.log_tensorboard("best_acc",  info_dict["best_acc"], n_epoch, mode = "test")
-        self.log(self.__eval_to_str(n_epoch, info_dict, mode = "test"))
+        eval_dict["best_acc"] = self.best_acc
+        self.log_tensorboard("acc", eval_dict["acc"], n_epoch, mode = "test")
+        self.log_tensorboard("tpr", eval_dict["tpr"], n_epoch, mode = "test")
+        self.log_tensorboard("fpr", eval_dict["fpr"], n_epoch, mode = "test")
+        self.log_tensorboard("best_acc",  eval_dict["best_acc"], n_epoch, mode = "test")
+        self.log(self.__eval_to_str(n_epoch, eval_dict, mode = "test"))
 
         #Save checkpoint after a fixed period
-        self.save_checkpoint_every(info_dict, n_epoch)
+        self.save_checkpoint_every(state_dict, n_epoch)
         #Save best checkpoint
         if (is_better):
-            self._save_checkpoint(info_dict, self.__get_best_checkpoint_name())
+            self._save_checkpoint(state_dict, self.__get_best_checkpoint_name())
         
 
     def log_tensorboard(self, tag, value, step, mode="train"):

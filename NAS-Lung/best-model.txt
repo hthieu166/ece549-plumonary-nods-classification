@@ -1,0 +1,171 @@
+  (conv1): Sequential(
+    (0): Conv3d(1, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+    (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+  )
+  (conv2): Sequential(
+    (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+    (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): ReLU()
+  )
+  (first_cbam): ResCBAMLayer(
+    (ch_AvgPool): AvgPool3d(kernel_size=32, stride=32, padding=0)
+    (ch_MaxPool): MaxPool3d(kernel_size=32, stride=32, padding=0, dilation=1, ceil_mode=False)
+    (ch_Linear1): Linear(in_features=4, out_features=1, bias=False)
+    (ch_Linear2): Linear(in_features=1, out_features=4, bias=False)
+    (ch_Softmax): Softmax(dim=1)
+    (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+    (sp_Softmax): Softmax(dim=1)
+    (sp_sigmoid): Sigmoid()
+  )
+  (layers): Sequential(
+    (0): Sequential(
+      (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (1): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(4, 4, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (2): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(4, 4, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (3): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=16, stride=16, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=16, stride=16, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=4, out_features=1, bias=False)
+      (ch_Linear2): Linear(in_features=1, out_features=4, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+    (4): Sequential(
+      (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (5): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(4, 4, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(4, 4, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (6): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(4, 8, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(8, 8, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(4, 8, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (7): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=8, stride=8, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=8, stride=8, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=8, out_features=2, bias=False)
+      (ch_Linear2): Linear(in_features=2, out_features=8, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+    (8): Sequential(
+      (0): Conv3d(8, 8, kernel_size=(3, 3, 3), stride=(2, 2, 2), padding=(1, 1, 1), bias=False)
+      (1): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+    )
+    (9): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(8, 8, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(8, 8, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(8, 8, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (10): ResidualBlock(
+      (my_conv1): Sequential(
+        (0): Conv3d(8, 8, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (my_conv2): Sequential(
+        (0): Conv3d(8, 8, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1))
+        (1): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+      (conv3): Sequential(
+        (0): Conv3d(8, 8, kernel_size=(1, 1, 1), stride=(1, 1, 1))
+        (1): BatchNorm3d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU()
+      )
+    )
+    (11): ResCBAMLayer(
+      (ch_AvgPool): AvgPool3d(kernel_size=4, stride=4, padding=0)
+      (ch_MaxPool): MaxPool3d(kernel_size=4, stride=4, padding=0, dilation=1, ceil_mode=False)
+      (ch_Linear1): Linear(in_features=8, out_features=2, bias=False)
+      (ch_Linear2): Linear(in_features=2, out_features=8, bias=False)
+      (ch_Softmax): Softmax(dim=1)
+      (sp_Conv): Conv3d(2, 1, kernel_size=(3, 3, 3), stride=(1, 1, 1), padding=(1, 1, 1), bias=False)
+      (sp_Softmax): Softmax(dim=1)
+      (sp_sigmoid): Sigmoid()
+    )
+  )
+  (avg_pooling): AvgPool3d(kernel_size=4, stride=4, padding=0)
+  (fc): AngleLinear()
