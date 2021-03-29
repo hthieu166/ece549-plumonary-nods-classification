@@ -177,15 +177,15 @@ for idx in range(len(tefeatlst)):
 
 trainset = lunanod(preprocesspath, trfnamelst, trlabellst, trfeatlst, train=True, download=True,
                    transform=transform_train)
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size, shuffle=True, num_workers=20)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size, shuffle=True, num_workers=8)
 
 testset = lunanod(preprocesspath, tefnamelst, telabellst, tefeatlst, train=False, download=True,
                   transform=transform_test)
-testloader = torch.utils.data.DataLoader(testset, batch_size=args.batch_size, shuffle=False, num_workers=20)
+testloader = torch.utils.data.DataLoader(testset, batch_size=args.batch_size, shuffle=False, num_workers=8)
 
 
 # savemodelpath = './checkpoint-' + str(fold) + '/'
-tu = TrainUtils("./log/nas-model-1-fold-"+str(fold), ckpt_every = 50) 
+tu = TrainUtils("./log/nas-model-1-batch-8-fold-"+str(fold), ckpt_every = 50) 
 
 # Model
 print(args.resume)
