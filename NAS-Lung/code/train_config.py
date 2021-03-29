@@ -8,7 +8,8 @@ class Config():
         _mod_config = self._config["model"]
         self.model_name   = _mod_config["name"]
         self.model_config = _mod_config["params"]
-        self.train_params = self._config["train_params"] 
+        self.dataset_params = self._config["dataset"]
+        self.train_params   = self._config["train_params"] 
         self.experiment_id= osp.basename(cfg_file).replace(".yml", "") 
         print(self.model_config)
     

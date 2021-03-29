@@ -3,7 +3,7 @@ from torch.utils.tensorboard import SummaryWriter
 import torch
 import os.path as osp
 import os
-
+import ipdb
 class TrainUtils():
     def __init__(self, log_dir, model_selection_criteria = lambda x,y: x > y, ckpt_every = 10, train_config_dict = None):
         self.log_dir    = log_dir
@@ -14,14 +14,19 @@ class TrainUtils():
         os.makedirs(self.tensorboard_dir, exist_ok = True)
         # Set up log writer
         self.writer  = SummaryWriter(self.tensorboard_dir)
-        logging.basicConfig(filename=osp.join(self.log_dir, 'log.txt'), level=logging.INFO)
+        log_file_name =osp.join(self.log_dir, 'log.log')
+        logging.basicConfig(filename=log_file_name, level=logging.INFO,
+                            format='[%(asctime)s; %(levelname)s: %(name)s]: %(message)s',
+                            datefmt='%Y-%m-%d%H:%M:%S')
+        self.logger = logging.getLogger("logging.INFO")
+
         # Model selection criteria
         self.model_selection_criteria = model_selection_criteria
         self.best_acc = -1
 
     def log(self, message):
         print(message)
-        logging.info(message)
+        self.logger.info(message)
 
     def resume_from_ckpt(self, n_epoch):
         model_path = osp.join(self.log_dir, self.__get_best_checkpoint_name(n_epoch))

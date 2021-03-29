@@ -2,7 +2,10 @@ model:
   name: 'NAS'
   params:
     config: [[4,4], [4,8], [8,8]]
-
+dataset:
+  normalize:
+    mean: 178.83227827824444
+    std:  50.05896544303765
 train_params:
   batch_size: 32
   n_epochs: 100

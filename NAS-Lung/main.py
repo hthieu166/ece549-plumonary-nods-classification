@@ -15,13 +15,13 @@ import time
 from models.cnn_res import *
 # from utils import progress_bar
 from torch.autograd import Variable
-import logging
 import numpy as np
 import ast
 import pandas as pd
 import glob
 import os.path as osp
 
+import tqdm
 #Modified by hthieu
 from code.train_utils import TrainUtils
 from code.train_config import Config
@@ -64,9 +64,11 @@ use_cuda = torch.cuda.is_available()
 best_acc = 0  # best test accuracy
 best_acc_gbt = 0
 start_epoch = 0  # start from epoch 0 or last checkpoint epoch
-# Cal mean std
 import ipdb
 pixvlu, npix = 0, 0
+
+#### LOAD CONFIG ###
+cfg = Config(args.config_file)
 
 all_nods_npy = glob.glob(osp.join(preprocesspath,"*.npy"))
 print("Total nodules ", len(all_nods_npy))
@@ -91,11 +93,11 @@ print("Total nodules ", len(all_nods_npy))
 # # pixstd /= 255
 # print(pixmean, pixstd)
 
-pixmean, pixstd = 178.83227827824444 , 50.05896544303765
+pixmean, pixstd = cfg.dataset_params["normalize"]["mean"], cfg.dataset_params["normalize"]["std"]
 
-logging.info('mean ' + str(pixmean) + ' std ' + str(pixstd))
+print('mean ' + str(pixmean) + ' std ' + str(pixstd))
 # Datatransforms
-logging.info('==> Preparing data..')  # Random Crop, Zero out, x z flip, scale,
+print('==> Preparing data..')  # Random Crop, Zero out, x z flip, scale,
 transform_train = transforms.Compose([
     # transforms.RandomScale(range(28, 38)),
     transforms.RandomCrop(32, padding=4),
@@ -169,8 +171,7 @@ for idx in range(len(tefeatlst)):
     # tefeatlst[idx][2] /= mxz
     tefeatlst[idx][-1] /= mxd
 
-#### LOAD CONFIG ###
-cfg = Config(args.config_file)
+
 
 trainset = lunanod(preprocesspath, trfnamelst, trlabellst, trfeatlst, train=True, download=True,
                    transform=transform_train)
@@ -201,8 +202,8 @@ if args.resume:
     start_epoch = checkpoint['epoch']
     print(start_epoch)
 else:
-    logging.info('==> Building model..')
-    logging.info('args.savemodel : ' + args.savemodel)
+    tu.log('==> Building model..')
+    tu.log('args.savemodel : ' + args.savemodel)
     # net = ConvRes([[64, 64, 64], [128, 128, 256], [256, 256, 256, 512]]) #base
     if  cfg.model_name == "NAS":
         net = ConvRes(cfg.model_config["config"]) # model-1
@@ -253,11 +254,9 @@ optimizer = optim.Adam(net.parameters(), lr=cfg.train_params["init_lr"], betas=(
 
 
 # L2Loss = torch.nn.MSELoss()
-import tqdm
 # Training
 def train(epoch):
-    # logging.info('\nEpoch: ' + str(epoch))
-    tu.log("\nEpoch: " + str(epoch))
+    print("\nEpoch: " + str(epoch))
     net.train()
     get_lr(epoch)
     train_loss = 0
