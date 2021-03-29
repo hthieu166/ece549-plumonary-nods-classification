@@ -25,7 +25,9 @@ import os.path as osp
 #Modified by hthieu
 from code.train_utils import TrainUtils
 # print(os.environ["CUDA_VISIBLE_DEVICES"])
+print(torch.randn(1).cuda())
 os.environ["CUDA_VISIBLE_DEVICES"] = "0" 
+print(torch.version.cuda)
 print("Total cuda devices", torch.cuda.device_count())
 #SET GPU
 
@@ -37,7 +39,7 @@ dataframe       = pd.read_csv('./data/annotationdetclsconvfnl_v3.csv',
 SUBSETS_DIR      = './subsets/'
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
-parser.add_argument('--lr', default=0.0002, type=float, help='learning rate')
+parser.add_argument('--lr', default=0.002, type=float, help='learning rate') #0.0002
 parser.add_argument('--batch_size', default=1, type=int, help='batch size ')
 parser.add_argument('--resume', '-r', action='store_true', help='resume from checkpoint')
 parser.add_argument('--savemodel', type=str, default='', help='resume from checkpoint model')
@@ -52,6 +54,9 @@ parser.add_argument('--beta1', type=float, default=0.5)  # momentum1 in Adam
 parser.add_argument('--beta2', type=float, default=0.999)  # momentum2 in Adam
 parser.add_argument('--lamb', type=float, default=1, help="lambda for loss2")
 parser.add_argument('--fold', type=int, default=5, help="fold")
+
+parser.add_argument("--decay_epochs", type=list, default=[20, 60, 80], help="decay epochs")
+parser.add_argument("--lr_decay", type= float, default=0.1)
 
 args = parser.parse_args()
 
@@ -204,8 +209,8 @@ if args.resume:
 else:
     logging.info('==> Building model..')
     logging.info('args.savemodel : ' + args.savemodel)
-    net = ConvRes([[64, 64, 64], [128, 128, 256], [256, 256, 256, 512]]) #base
-    # net = ConvRes([[4,4], [4,8], [8,8]]) # model-1
+    # net = ConvRes([[64, 64, 64], [128, 128, 256], [256, 256, 256, 512]]) #base
+    net = ConvRes([[4,4], [4,8], [8,8]]) # model-1
     if args.savemodel != "":
         # args.savemodel = '/home/xxx/DeepLung-master/nodcls/checkpoint-5/ckpt.t7'
         checkpoint = torch.load(args.savemodel)
@@ -221,11 +226,16 @@ lr = args.lr
 
 def get_lr(epoch):
     global lr
-    if (epoch + 1) > (args.num_epochs - args.num_epochs_decay):
-        lr -= (lr / float(args.num_epochs_decay))
+    if (epoch in args.decay_epochs):
+        lr = lr * args.lr_decay
         for param_group in optimizer.param_groups:
             param_group['lr'] = lr
         print('Decay learning rate to lr: {}.'.format(lr))
+    # if (epoch + 1) > (args.num_epochs - args.num_epochs_decay):
+    #     lr -= (lr / float(args.num_epochs_decay))
+    #     for param_group in optimizer.param_groups:
+    #         param_group['lr'] = lr
+    #     print('Decay learning rate to lr: {}.'.format(lr))
 
 
 if use_cuda:
@@ -255,7 +265,6 @@ def train(epoch):
     train_loss = 0
     correct = 0
     total = 0
-    print(net)
     with tqdm.tqdm(total=len(trainloader)) as pbar:
         for batch_idx, (inputs, targets, feat) in enumerate(trainloader):
             if use_cuda:

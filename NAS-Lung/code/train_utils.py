@@ -56,7 +56,7 @@ class TrainUtils():
 
     def add_test_ckpt(self, n_epoch, state_dict):
         eval_dict = state_dict["eval"]
-        is_better = self.model_selection_criteria(info_dict["acc"], self.best_acc)
+        is_better = self.model_selection_criteria(eval_dict["acc"], self.best_acc)
         if (is_better):
             self.best_acc = eval_dict["acc"]
         #Append best_acc, epoch to eval dict
@@ -66,7 +66,7 @@ class TrainUtils():
         self.log_tensorboard("fpr", eval_dict["fpr"], n_epoch, mode = "test")
         self.log_tensorboard("best_acc",  eval_dict["best_acc"], n_epoch, mode = "test")
         self.log(self.__eval_to_str(n_epoch, eval_dict, mode = "test"))
-
+        state_dict["eval"] = eval_dict
         #Save checkpoint after a fixed period
         self.save_checkpoint_every(state_dict, n_epoch)
         #Save best checkpoint
