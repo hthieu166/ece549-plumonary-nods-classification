@@ -24,6 +24,7 @@ import os.path as osp
 
 #Modified by hthieu
 from code.train_utils import TrainUtils
+from code.train_config import Config
 # print(os.environ["CUDA_VISIBLE_DEVICES"])
 print(torch.randn(1).cuda())
 os.environ["CUDA_VISIBLE_DEVICES"] = "0" 
@@ -44,19 +45,14 @@ parser.add_argument('--batch_size', default=1, type=int, help='batch size ')
 parser.add_argument('--resume', '-r', action='store_true', help='resume from checkpoint')
 parser.add_argument('--savemodel', type=str, default='', help='resume from checkpoint model')
 parser.add_argument("--gpuids", type=str, default='all', help='use which gpu')
-
-parser.add_argument('--num_epochs', type=int, default=100)
-parser.add_argument('--num_epochs_decay', type=int, default=20)
-
-parser.add_argument('--num_workers', type=int, default=24)
+parser.add_argument('--num_workers', type=int, default=8)
 
 parser.add_argument('--beta1', type=float, default=0.5)  # momentum1 in Adam
 parser.add_argument('--beta2', type=float, default=0.999)  # momentum2 in Adam
 parser.add_argument('--lamb', type=float, default=1, help="lambda for loss2")
 parser.add_argument('--fold', type=int, default=5, help="fold")
 
-parser.add_argument("--decay_epochs", type=list, default=[20, 60, 80], help="decay epochs")
-parser.add_argument("--lr_decay", type= float, default=0.1)
+parser.add_argument("--config_file", type=str, default=None, help = "path to config file")
 
 args = parser.parse_args()
 
@@ -64,8 +60,6 @@ CROPSIZE = 32
 gbtdepth = 1
 fold = args.fold
 blklst = []
-# logging.basicConfig(filename='log-' + str(fold), level=logging.INFO)
-
 use_cuda = torch.cuda.is_available()
 best_acc = 0  # best test accuracy
 best_acc_gbt = 0
@@ -175,20 +169,20 @@ for idx in range(len(tefeatlst)):
     # tefeatlst[idx][2] /= mxz
     tefeatlst[idx][-1] /= mxd
 
+#### LOAD CONFIG ###
+cfg = Config(args.config_file)
+
 trainset = lunanod(preprocesspath, trfnamelst, trlabellst, trfeatlst, train=True, download=True,
                    transform=transform_train)
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=args.batch_size, shuffle=True, num_workers=8)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=cfg.train_params["batch_size"], shuffle=True, num_workers=args.num_workers)
 
 testset = lunanod(preprocesspath, tefnamelst, telabellst, tefeatlst, train=False, download=True,
                   transform=transform_test)
-testloader = torch.utils.data.DataLoader(testset, batch_size=args.batch_size, shuffle=False, num_workers=8)
+testloader = torch.utils.data.DataLoader(testset, batch_size=cfg.train_params["batch_size"], shuffle=False, num_workers=args.num_workers)
 
-
-# savemodelpath = './checkpoint-' + str(fold) + '/'
-tu = TrainUtils("./log/nas-model-1-batch-8-fold-"+str(fold), ckpt_every = 50) 
+tu = TrainUtils("./log/"+cfg.experiment_id+"-fold-"+str(fold), ckpt_every = cfg.train_params["ckpt_every"], train_config_dict = cfg._config) 
 
 # Model
-print(args.resume)
 if args.resume:
     print('==> Resuming from checkpoint..')
     # print(args.savemodel)
@@ -210,9 +204,15 @@ else:
     logging.info('==> Building model..')
     logging.info('args.savemodel : ' + args.savemodel)
     # net = ConvRes([[64, 64, 64], [128, 128, 256], [256, 256, 256, 512]]) #base
-    net = ConvRes([[4,4], [4,8], [8,8]]) # model-1
+    if  cfg.model_name == "NAS":
+        net = ConvRes(cfg.model_config["config"]) # model-1
+    elif cfg.model_name == "DPN3D":
+        net = DPN92_3D()
+    else: 
+        print("Unsupported model ", cfg.model_name, "!")
+        raise  
+    
     if args.savemodel != "":
-        # args.savemodel = '/home/xxx/DeepLung-master/nodcls/checkpoint-5/ckpt.t7'
         checkpoint = torch.load(args.savemodel)
         finenet = checkpoint
         Low_rankmodel_dic = net.state_dict()
@@ -221,13 +221,12 @@ else:
         net.load_state_dict(Low_rankmodel_dic)
         print("net_loaded")
 
-lr = args.lr
-
+lr = cfg.train_params["init_lr"]
 
 def get_lr(epoch):
     global lr
-    if (epoch in args.decay_epochs):
-        lr = lr * args.lr_decay
+    if (epoch in cfg.train_params["decay_epochs"]):
+        lr = lr * cfg.train_params["lr_decay"]
         for param_group in optimizer.param_groups:
             param_group['lr'] = lr
         print('Decay learning rate to lr: {}.'.format(lr))
@@ -236,7 +235,6 @@ def get_lr(epoch):
     #     for param_group in optimizer.param_groups:
     #         param_group['lr'] = lr
     #     print('Decay learning rate to lr: {}.'.format(lr))
-
 
 if use_cuda:
     net.cuda()
@@ -251,7 +249,7 @@ if use_cuda:
     cudnn.benchmark = False  # True
 
 criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(net.parameters(), lr=args.lr, betas=(args.beta1, args.beta2))
+optimizer = optim.Adam(net.parameters(), lr=cfg.train_params["init_lr"], betas=(args.beta1, args.beta2))
 
 
 # L2Loss = torch.nn.MSELoss()
@@ -368,6 +366,6 @@ def test(epoch):
 
 
 if __name__ == '__main__':
-    for epoch in range(start_epoch + 1, start_epoch + args.num_epochs + 1):
+    for epoch in range(start_epoch + 1, start_epoch + cfg.train_params["n_epochs"] + 1):
         train(epoch)
         test(epoch)

@@ -5,9 +5,10 @@ import os.path as osp
 import os
 
 class TrainUtils():
-    def __init__(self, log_dir, model_selection_criteria = lambda x,y: x > y, ckpt_every = 10):
+    def __init__(self, log_dir, model_selection_criteria = lambda x,y: x > y, ckpt_every = 10, train_config_dict = None):
         self.log_dir    = log_dir
         self.ckpt_every = ckpt_every
+        self.train_config = train_config_dict
         os.makedirs(log_dir, exist_ok = True)
         self.tensorboard_dir = osp.join(log_dir, "tensorboard")
         os.makedirs(self.tensorboard_dir, exist_ok = True)
@@ -66,7 +67,11 @@ class TrainUtils():
         self.log_tensorboard("fpr", eval_dict["fpr"], n_epoch, mode = "test")
         self.log_tensorboard("best_acc",  eval_dict["best_acc"], n_epoch, mode = "test")
         self.log(self.__eval_to_str(n_epoch, eval_dict, mode = "test"))
+        
+        #Add additional info to the state dict
         state_dict["eval"] = eval_dict
+        if (self.train_config != None):
+            state_dict["train_configs"] = self.train_config
         #Save checkpoint after a fixed period
         self.save_checkpoint_every(state_dict, n_epoch)
         #Save best checkpoint

@@ -1,0 +1,13 @@
+model:
+  name: 'NAS'
+  params:
+    config: [[4,4], [4,8], [8,8]]
+
+train_params:
+  batch_size: 32
+  n_epochs: 100
+  ckpt_every: 50
+  init_lr: 0.002
+  lr_decay: 0.1
+  decay_epochs: [20,60,80]
+

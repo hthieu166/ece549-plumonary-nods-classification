@@ -30,7 +30,7 @@ def arg_parse():
     parser.add_argument('--exp_name', type=str, default='nas-base-fold', help='name of the experiment')
     parser.add_argument('--log_dir', type=str, default='log', 
                         help='path to the log directory')
-    parser.add_argument("--out_dir", type=str, default="eval_result", help='path ')
+    parser.add_argument("--out_dir", type=str, default="eval_result", help='path for the output csv')
     return parser.parse_args()
 
 if __name__ == "__main__":
