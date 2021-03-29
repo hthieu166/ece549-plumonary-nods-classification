@@ -13,6 +13,7 @@ import os
 import argparse
 import time
 from models.cnn_res import *
+from models.dpn3d import *
 # from utils import progress_bar
 from torch.autograd import Variable
 import numpy as np
@@ -25,10 +26,6 @@ import tqdm
 #Modified by hthieu
 from code.train_utils import TrainUtils
 from code.train_config import Config
-# print(os.environ["CUDA_VISIBLE_DEVICES"])
-print(torch.randn(1).cuda())
-os.environ["CUDA_VISIBLE_DEVICES"] = "0" 
-print(torch.version.cuda)
 print("Total cuda devices", torch.cuda.device_count())
 #SET GPU
 
@@ -243,8 +240,10 @@ if use_cuda:
         device_ids = range(torch.cuda.device_count())
     else:
         device_ids = map(int, list(filter(str.isdigit, args.gpuids)))
-
-    device_ids = [torch.device('cuda:0')]
+    if (torch.cuda.device_count() == 1):
+        device_ids = [torch.device('cuda:0')]
+    else:
+        device_ids = [torch.device('cuda:0'), torch.device('cuda:1')]
     print('gpu use' + str(device_ids))
     net = torch.nn.DataParallel(net, device_ids=device_ids)
     cudnn.benchmark = False  # True

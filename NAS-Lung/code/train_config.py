@@ -7,11 +7,11 @@ class Config():
         self._config = Config.__load_yml(cfg_file)
         _mod_config = self._config["model"]
         self.model_name   = _mod_config["name"]
-        self.model_config = _mod_config["params"]
+        if "params" in _mod_config:
+            self.model_config = _mod_config["params"]
         self.dataset_params = self._config["dataset"]
         self.train_params   = self._config["train_params"] 
         self.experiment_id= osp.basename(cfg_file).replace(".yml", "") 
-        print(self.model_config)
     
     @staticmethod
     def __load_yml(file_path):

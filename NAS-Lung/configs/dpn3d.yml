@@ -1,0 +1,14 @@
+model:
+  name: 'DPN3D'
+dataset:
+  normalize:
+    mean: 178.83227827824444
+    std:  50.05896544303765
+train_params:
+  batch_size: 8
+  n_epochs: 100
+  ckpt_every: 50
+  init_lr: 0.1
+  lr_decay: 0.1
+  decay_epochs: [20,60,80]
+
