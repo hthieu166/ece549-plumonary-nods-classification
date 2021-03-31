@@ -14,6 +14,8 @@ import argparse
 import time
 from models.cnn_res import *
 from models.dpn3d import *
+from models.net_sphere import *
+from models.cnn_res_se import *
 # from utils import progress_bar
 from torch.autograd import Variable
 import numpy as np
@@ -26,10 +28,8 @@ import tqdm
 #Modified by hthieu
 from code.train_utils import TrainUtils
 from code.train_config import Config
+
 print("Total cuda devices", torch.cuda.device_count())
-#SET GPU
-
-
 # preprocesspath  = '/media/DATA/LUNA16/crop/'
 preprocesspath  = '../../data/crop/'
 dataframe       = pd.read_csv('./data/annotationdetclsconvfnl_v3.csv',
@@ -37,8 +37,6 @@ dataframe       = pd.read_csv('./data/annotationdetclsconvfnl_v3.csv',
 SUBSETS_DIR      = './subsets/'
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
-parser.add_argument('--lr', default=0.002, type=float, help='learning rate') #0.0002
-parser.add_argument('--batch_size', default=1, type=int, help='batch size ')
 parser.add_argument('--resume', '-r', action='store_true', help='resume from checkpoint')
 parser.add_argument('--savemodel', type=str, default='', help='resume from checkpoint model')
 parser.add_argument("--gpuids", type=str, default='all', help='use which gpu')
@@ -203,9 +201,14 @@ else:
     tu.log('args.savemodel : ' + args.savemodel)
     # net = ConvRes([[64, 64, 64], [128, 128, 256], [256, 256, 256, 512]]) #base
     if  cfg.model_name == "NAS":
+        tu.log("Running NAS")
         net = ConvRes(cfg.model_config["config"]) # model-1
     elif cfg.model_name == "DPN3D":
+        tu.log("Running DPN3D")
         net = DPN92_3D()
+    elif cfg.model_name == "SE-RES":
+        tu.log("Running SE-Res Model")
+        net = ConvResSE(cfg.model_config["config"])
     else: 
         print("Unsupported model ", cfg.model_name, "!")
         raise  
@@ -248,11 +251,26 @@ if use_cuda:
     net = torch.nn.DataParallel(net, device_ids=device_ids)
     cudnn.benchmark = False  # True
 
-criterion = nn.CrossEntropyLoss()
+if (cfg.loss == None):   
+    lss_name = "ce"
+    criterion = nn.CrossEntropyLoss()
+elif cfg.loss == "CrossEntropy": 
+    lss_name = "ce"
+    criterion = nn.CrossEntropyLoss()
+elif (cfg.loss == "AngleLoss"):
+    lss_name = "angle"
+    criterion = AngleLoss()
+else:
+    print("Loss function does not support!")
+    raise 
+
+if lss_name == "ce":
+    tu.log("Using Cross Entropy Loss")
+else:
+    tu.log("Using Angle Loss")
+
 optimizer = optim.Adam(net.parameters(), lr=cfg.train_params["init_lr"], betas=(args.beta1, args.beta2))
 
-
-# L2Loss = torch.nn.MSELoss()
 # Training
 def train(epoch):
     print("\nEpoch: " + str(epoch))
@@ -267,11 +285,13 @@ def train(epoch):
                 inputs, targets = inputs.cuda(), targets.cuda()
             optimizer.zero_grad()
             inputs, targets = Variable(inputs), Variable(targets) 
-            outputs = net(inputs)[0]
+            outputs = net(inputs)
             loss = criterion(outputs, targets)
             loss.backward()
             optimizer.step()
             train_loss += loss.data.item()
+            if lss_name == "angle":
+                outputs = outputs[0]
             _, predicted = torch.max(outputs.data, 1)
             total += targets.size(0)
             correct += predicted.eq(targets.data).cpu().sum()
@@ -299,10 +319,13 @@ def test(epoch):
             inputs, targets = inputs.cuda(), targets.cuda()
 
         inputs, targets = Variable(inputs, requires_grad=False), Variable(targets)
-        outputs = net(inputs)[0]
+        outputs = net(inputs)
 
         loss = criterion(outputs, targets)
         test_loss += loss.data.item()
+
+        if lss_name == "angle":
+                outputs = outputs[0]
         _, predicted = torch.max(outputs.data, 1)
         total += targets.size(0)
         correct += predicted.eq(targets.data).cpu().sum()

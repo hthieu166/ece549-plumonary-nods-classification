@@ -3,6 +3,9 @@ import typing
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import os
+import sys
+sys.path.insert(0,os.path.abspath("../models"))
 from .net_sphere import *
 
 
@@ -105,7 +108,7 @@ class ResidualBlock(nn.Module):
 
 
 class ConvRes(nn.Module):
-    def __init__(self, config):
+    def __init__(self, config, softmax = "angle"):
         super(ConvRes, self).__init__()
         self.conv1 = conv3d_same_size(in_channels=1, out_channels=4, kernel_size=3)
         self.conv2 = conv3d_same_size(in_channels=4, out_channels=4, kernel_size=3)
@@ -123,7 +126,11 @@ class ConvRes(nn.Module):
             layers.append(ResCBAMLayer(self.last_channel, 32//(2**i)))
         self.layers = nn.Sequential(*layers)
         self.avg_pooling = nn.AvgPool3d(kernel_size=4, stride=4)
-        self.fc = AngleLinear(in_features=self.last_channel, out_features=2)
+        # self.fc = nn.Linear(in_features=self.last_channel, out_features=2)
+        if softmax == "angle":
+            self.fc = AngleLinear(in_features=self.last_channel, out_features=2)
+        else:
+            self.fc = nn.Linear(in_features=self.last_channel, out_features=2)
 
     def forward(self, inputs):
         if debug:

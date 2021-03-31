@@ -168,7 +168,7 @@ class AngleLoss(nn.Module):
         index = cos_theta.data * 0.0  # size=(B, Classnum)
         # index = index.scatter(1, target.data.view(-1, 1).long(), 1)
         index = index.byte()
-        index = Variable(index)
+        index = Variable(index).to(torch.bool)
         # index = Variable(torch.randn(1,2)).byte()
 
         self.lamb = max(self.LambdaMin, self.LambdaMax / (1 + 0.1 * self.it))
@@ -177,7 +177,7 @@ class AngleLoss(nn.Module):
         # output1[index1] = output[index] - cos_theta[index] * (1.0 + 0) / (1 + self.lamb)
         # output1[index1] = output[index] + phi_theta[index] * (1.0 + 0) / (1 + self.lamb)
         output[index] = output1[index]- cos_theta[index] * (1.0 + 0) / (1 + self.lamb)+ phi_theta[index] * (1.0 + 0) / (1 + self.lamb)
-        logpt = F.log_softmax(output)
+        logpt = F.log_softmax(output, dim=1)
         logpt = logpt.gather(1, target.long())
         logpt = logpt.view(-1)
         pt = Variable(logpt.data.exp())
