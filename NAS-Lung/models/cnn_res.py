@@ -3,10 +3,11 @@ import typing
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import os
 import sys
-sys.path.insert(0,os.path.abspath("../models"))
-from .net_sphere import *
+import os
+sys.path.insert(0, os.path.abspath(".."))
+sys.path.insert(0, os.path.abspath("."))
+from models.net_sphere import *
 
 
 debug = False
@@ -129,8 +130,11 @@ class ConvRes(nn.Module):
         # self.fc = nn.Linear(in_features=self.last_channel, out_features=2)
         if softmax == "angle":
             self.fc = AngleLinear(in_features=self.last_channel, out_features=2)
-        else:
+        elif softmax == "normal":
             self.fc = nn.Linear(in_features=self.last_channel, out_features=2)
+        else:
+            print("Softmax option does not support!")
+            raise
 
     def forward(self, inputs):
         if debug:

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
-CONFIG=nas-model-1-cross-entropy
-maxeps=9
+CONFIG=multi-views
+maxeps=0
 
 for (( i=0; i<=$maxeps; i+=1)) 
 do

@@ -1,8 +1,8 @@
 model:
-  name: 'NAS'
+  name: 'RES-MULTIVIEWS'
   params:
     config: [[4,4], [4,8], [8,8]]
-loss: 'CrossEntropy'
+loss: 'MultiViews'
 dataset:
   normalize:
     mean: 178.83227827824444

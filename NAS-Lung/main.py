@@ -16,6 +16,8 @@ from models.cnn_res import *
 from models.dpn3d import *
 from models.net_sphere import *
 from models.cnn_res_se import *
+from models.cnn_res_multi_view import *
+from losses.loss_multiview import *
 # from utils import progress_bar
 from torch.autograd import Variable
 import numpy as np
@@ -202,17 +204,20 @@ else:
     # net = ConvRes([[64, 64, 64], [128, 128, 256], [256, 256, 256, 512]]) #base
     if  cfg.model_name == "NAS":
         tu.log("Running NAS")
-        net = ConvRes(cfg.model_config["config"]) # model-1
+        if cfg.loss == "CrossEntropy":
+            net = ConvRes(cfg.model_config["config"], softmax="normal")
+        else:
+            net = ConvRes(cfg.model_config["config"], softmax="angle")
     elif cfg.model_name == "DPN3D":
-        tu.log("Running DPN3D")
         net = DPN92_3D()
     elif cfg.model_name == "SE-RES":
-        tu.log("Running SE-Res Model")
         net = ConvResSE(cfg.model_config["config"])
+    elif cfg.model_name == "RES-MULTIVIEWS":
+        net = ConvResMultiViews(cfg.model_config["config"])
     else: 
         print("Unsupported model ", cfg.model_name, "!")
         raise  
-    
+    tu.log("Running " + cfg.model_name)
     if args.savemodel != "":
         checkpoint = torch.load(args.savemodel)
         finenet = checkpoint
@@ -252,22 +257,22 @@ if use_cuda:
     cudnn.benchmark = False  # True
 
 if (cfg.loss == None):   
-    lss_name = "ce"
+    take_first = False
     criterion = nn.CrossEntropyLoss()
 elif cfg.loss == "CrossEntropy": 
-    lss_name = "ce"
+    take_first = True
     criterion = nn.CrossEntropyLoss()
 elif (cfg.loss == "AngleLoss"):
-    lss_name = "angle"
+    take_first = True
     criterion = AngleLoss()
+elif (cfg.loss == "MultiViews"):
+    take_first = True
+    criterion = MultiViewsLoss()
 else:
     print("Loss function does not support!")
     raise 
 
-if lss_name == "ce":
-    tu.log("Using Cross Entropy Loss")
-else:
-    tu.log("Using Angle Loss")
+tu.log("Ussing " + cfg.loss)
 
 optimizer = optim.Adam(net.parameters(), lr=cfg.train_params["init_lr"], betas=(args.beta1, args.beta2))
 
@@ -290,7 +295,7 @@ def train(epoch):
             loss.backward()
             optimizer.step()
             train_loss += loss.data.item()
-            if lss_name == "angle":
+            if take_first == True:
                 outputs = outputs[0]
             _, predicted = torch.max(outputs.data, 1)
             total += targets.size(0)
@@ -324,8 +329,8 @@ def test(epoch):
         loss = criterion(outputs, targets)
         test_loss += loss.data.item()
 
-        if lss_name == "angle":
-                outputs = outputs[0]
+        if take_first == True:
+            outputs = outputs[0]
         _, predicted = torch.max(outputs.data, 1)
         total += targets.size(0)
         correct += predicted.eq(targets.data).cpu().sum()
