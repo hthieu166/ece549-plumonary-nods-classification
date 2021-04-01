@@ -1,8 +1,8 @@
 model:
-  name: 'RES-MULTIVIEWS'
+  name: 'NAS'
   params:
     config: [[4,4], [4,8], [8,8]]
-loss: 'MultiViewsContrast'
+loss: 'AngleLoss'
 dataset:
   normalize:
     mean: 178.83227827824444
@@ -13,4 +13,5 @@ train_params:
   ckpt_every: 50
   init_lr: 0.002
   lr_decay: 0.1
-  decay_epochs: [50]
+  decay_epochs: [80]
+

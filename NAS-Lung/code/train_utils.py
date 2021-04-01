@@ -28,13 +28,17 @@ class TrainUtils():
         print(message)
         self.logger.info(message)
 
-    def resume_from_ckpt(self, n_epoch):
+    def resume_from_ckpt_at_epoch(self, n_epoch):
         model_path = osp.join(self.log_dir, self.__get_best_checkpoint_name(n_epoch))
         assert osp.exists(model_path), "Error: no checkpoint found!"
         model = torch.load(model_path)
         self.best_acc = model["eval"]["best_acc"]
         return model
     
+    def resume_from_ckpt(self, ckpt_path):
+        model = torch.load(ckpt_path)
+        # self.best_acc = model["eval"]["best_acc"]
+        return model
 
     def __get_checkpoint_name(self, n_epoch):
         return "{:04}.model".format(n_epoch)
