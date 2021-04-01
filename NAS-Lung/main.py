@@ -25,7 +25,7 @@ import os.path as osp
 #Modified by hthieu
 from code.train_utils import TrainUtils
 # print(os.environ["CUDA_VISIBLE_DEVICES"])
-os.environ["CUDA_VISIBLE_DEVICES"] = "0" 
+os.environ["CUDA_VISIBLE_DEVICES"] = "1" 
 print("Total cuda devices", torch.cuda.device_count())
 #SET GPU
 
