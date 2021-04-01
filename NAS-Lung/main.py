@@ -268,6 +268,9 @@ elif (cfg.loss == "AngleLoss"):
 elif (cfg.loss == "MultiViews"):
     take_first = True
     criterion = MultiViewsLoss()
+elif (cfg.loss == "MultiViewsContrast"):
+    take_first = True
+    criterion = MultiViewsContrastLoss()
 else:
     print("Loss function does not support!")
     raise 

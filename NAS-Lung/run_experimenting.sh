@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-CONFIG=multi-views
+CONFIG=multi-views-contrast
 maxeps=0
 
 for (( i=0; i<=$maxeps; i+=1)) 
