@@ -3,11 +3,20 @@ from models.cnn_res import *
 import os
 from torch.autograd import Variable
 import ipdb 
+import numpy as np
 if __name__ == "__main__":
     # os.environ["CUDA_VISIBLE_DEVICES"] = "1" 
-    ckpt = T.load("log/ckpt/model-1-ckpt-5.t7")
-    # ckpt = T.load("log/nas-model-1-cross-entropy-fold-0/best.model", map_location="cpu")
+    # all_acc = []
+    # for i in range(1,6):
+    #     ckpt = T.load("log/ckpt/Model-1/checkpoint-{}/ckpt.t7".format(i))
+    #     all_acc.append(ckpt["acc"])
+    # all_acc = np.array(all_acc)
+    # print("Mean: ",all_acc.mean())
+    # print(all_acc)
+    ckpt = T.load("log/ckpt/Model-1/checkpoint-5/ckpt.t7")
     print(ckpt)
+    # ckpt = T.load("log/nas-model-1-cross-entropy-fold-0/best.model", map_location="cpu")
+    # print(ckpt)
 
     # x   = Variable(torch.randn(1,1,32,32,32))
     # net = ConvRes([[4,4], [4,8], [8,32]])
@@ -21,3 +30,5 @@ if __name__ == "__main__":
     # for comp1, comp2 in zip(net.parameters(), ckpt["net"].parameters()):
         # print(comp1.shape == comp2.shape)
     # print()
+
+    # 87.85046729 85.58558559 89.32038835 89.         92.39130435

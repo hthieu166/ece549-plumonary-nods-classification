@@ -8,7 +8,7 @@ dataset:
     mean: 178.83227827824444
     std:  50.05896544303765
 train_params:
-  batch_size: 64
+  batch_size: 8
   n_epochs: 240
   ckpt_every: 80
   init_lr: 0.002

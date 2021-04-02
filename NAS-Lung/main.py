@@ -25,7 +25,7 @@ import ast
 import pandas as pd
 import glob
 import os.path as osp
-
+import ipdb
 import tqdm
 #Modified by hthieu
 from code.train_utils import TrainUtils
@@ -46,49 +46,42 @@ parser.add_argument('--num_workers', type=int, default=8)
 
 parser.add_argument('--beta1', type=float, default=0.5)  # momentum1 in Adam
 parser.add_argument('--beta2', type=float, default=0.999)  # momentum2 in Adam
-parser.add_argument('--lamb', type=float, default=1, help="lambda for loss2")
-parser.add_argument('--fold', type=int, default=5, help="fold")
+
+parser.add_argument('--fold', type=int, default=-1, help="fold")
 parser.add_argument('--mode', type=str, default="train", help = "training or testing mode")
 parser.add_argument("--config_file", type=str, default=None, help = "path to config file")
+parser.add_argument("--eval_mode", type=str, default= "1fold", help = "select mode for eval, 1fold or 5 folds")
+parser.add_argument("--log_dir", type=str, default="./log", help = "select dir for saving logs/checkpoints")
 
 args = parser.parse_args()
 
 CROPSIZE = 32
 gbtdepth = 1
-fold = args.fold
+
 blklst = []
 use_cuda = torch.cuda.is_available()
 best_acc = 0  # best test accuracy
 best_acc_gbt = 0
 start_epoch = 0  # start from epoch 0 or last checkpoint epoch
-import ipdb
 pixvlu, npix = 0, 0
 
 #### LOAD CONFIG ###
 cfg = Config(args.config_file)
+log_dir = osp.join(args.log_dir, cfg.experiment_id+"-fold-"+str(args.fold)) if args.eval_mode == "1fold" else osp.join(args.log_dir, cfg.experiment_id)
+tu = TrainUtils(log_dir, ckpt_every = cfg.train_params["ckpt_every"], train_config_dict = cfg._config) 
+
+#### FOLDS FOR EVALUATE ###
+if args.eval_mode == "1fold":
+    tu.log("Using 1 fold evaluation")
+    fold = [args.fold]
+else:
+    tu.log("Using 5 folds evaluation")
+    fold = [0,1,2,3,4]
+    if args.fold != -1:
+        print("Flag --fold should not be used in the 5 folds evaluation mode")
 
 all_nods_npy = glob.glob(osp.join(preprocesspath,"*.npy"))
 print("Total nodules ", len(all_nods_npy))
-
-#CALCULATE MEAN & STD
-# for fname in all_nods_npy:
-#     if fname.endswith('.npy'):
-#         if fname[:-4] in blklst: continue
-#         data = np.load(fname)
-#         pixvlu += np.sum(data)
-#         # print("data.shape = " + str(data.shape))
-#         npix += np.prod(data.shape)
-# pixmean = pixvlu / float(npix)
-# pixvlu = 0
-# for fname in all_nods_npy:
-#     if fname.endswith('.npy'):
-#         if fname[:-4] in blklst: continue
-#         data = np.load(fname) - pixmean
-#         pixvlu += np.sum(data * data)
-
-# pixstd = np.sqrt(pixvlu / float(npix))
-# # pixstd /= 255
-# print(pixmean, pixstd)
 
 pixmean, pixstd = cfg.dataset_params["normalize"]["mean"], cfg.dataset_params["normalize"]["std"]
 
@@ -125,30 +118,17 @@ crdxlst = dataframe['coordX'].tolist()[1:]
 crdylst = dataframe['coordY'].tolist()[1:]
 crdzlst = dataframe['coordZ'].tolist()[1:]
 dimlst = dataframe['diameter_mm'].tolist()[1:]
-
 # test id
-with open(osp.join(SUBSETS_DIR, "subset{}.txt".format(str(fold)))) as fo:
-    teidlst = [i.strip() for i in fo.readlines()]
-
+teidlst = []
+for test_fold in fold:
+    with open(osp.join(SUBSETS_DIR, "subset{}.txt".format(str(test_fold)))) as fo:
+        teidlst += [i.strip() for i in fo.readlines()]
+print("Total test nodules: ",len(teidlst))
 mxx = mxy = mxz = mxd = 0
 for srsid, label, x, y, z, d in zip(alllst, labellst, crdxlst, crdylst, crdzlst, dimlst):
-    # mxx = max(abs(float(x)), mxx)
-    # mxy = max(abs(float(y)), mxy)
-    # mxz = max(abs(float(z)), mxz)
-    # mxd = max(abs(float(d)), mxd)
-    # if srsid in blklst: continue
-    # # crop raw pixel as feature
-    # data = np.load(os.path.join(preprocesspath, srsid + '.npy'))
-    # bgx = int(data.shape[0] / 2 - CROPSIZE / 2)
-    # bgy = int(data.shape[1] / 2 - CROPSIZE / 2)
-    # bgz = int(data.shape[2] / 2 - CROPSIZE / 2)
-    # data = np.array(data[bgx:bgx + CROPSIZE, bgy:bgy + CROPSIZE, bgz:bgz + CROPSIZE])
-    # # feat = np.hstack((np.reshape(data, (-1,)) / 255, float(d)))
-    # y, x, z = np.ogrid[-CROPSIZE / 2:CROPSIZE / 2, -CROPSIZE / 2:CROPSIZE / 2, -CROPSIZE / 2:CROPSIZE / 2]
-    # mask = abs(y ** 3 + x ** 3 + z ** 3) <= abs(float(d)) ** 3
+    
     feat = np.zeros((CROPSIZE, CROPSIZE, CROPSIZE), dtype=float)
-    # feat[mask] = 1
-    # print(feat.shape)
+
     if srsid.split('-')[0] in teidlst:
         tefnamelst.append(srsid + '.npy')
         telabellst.append(int(label))
@@ -157,16 +137,6 @@ for srsid, label, x, y, z, d in zip(alllst, labellst, crdxlst, crdylst, crdzlst,
         trfnamelst.append(srsid + '.npy')
         trlabellst.append(int(label))
         trfeatlst.append(feat)
-# for idx in range(len(trfeatlst)):
-#     # trfeatlst[idx][0] /= mxx
-#     # trfeatlst[idx][1] /= mxy
-#     # trfeatlst[idx][2] /= mxz
-#     trfeatlst[idx][-1] /= mxd
-# for idx in range(len(tefeatlst)):
-#     # tefeatlst[idx][0] /= mxx
-#     # tefeatlst[idx][1] /= mxy
-#     # tefeatlst[idx][2] /= mxz
-#     tefeatlst[idx][-1] /= mxd
 
 trainset = lunanod(preprocesspath, trfnamelst, trlabellst, trfeatlst, train=True, download=True,
                    transform=transform_train)
@@ -175,8 +145,6 @@ trainloader = torch.utils.data.DataLoader(trainset, batch_size=cfg.train_params[
 testset = lunanod(preprocesspath, tefnamelst, telabellst, tefeatlst, train=False, download=True,
                   transform=transform_test)
 testloader = torch.utils.data.DataLoader(testset, batch_size=cfg.train_params["batch_size"], shuffle=False, num_workers=args.num_workers)
-
-tu = TrainUtils("./log/"+cfg.experiment_id+"-fold-"+str(fold), ckpt_every = cfg.train_params["ckpt_every"], train_config_dict = cfg._config) 
 
 # Model
 if args.resume:
@@ -199,7 +167,6 @@ if args.resume:
 else:
     tu.log('==> Building model..')
     tu.log('args.savemodel : ' + args.savemodel)
-    # net = ConvRes([[64, 64, 64], [128, 128, 256], [256, 256, 256, 512]]) #base
     if  cfg.model_name == "NAS":
         tu.log("Running NAS")
         if cfg.loss == "CrossEntropy":
@@ -234,11 +201,6 @@ def get_lr(epoch):
         for param_group in optimizer.param_groups:
             param_group['lr'] = lr
         print('Decay learning rate to lr: {}.'.format(lr))
-    # if (epoch + 1) > (args.num_epochs - args.num_epochs_decay):
-    #     lr -= (lr / float(args.num_epochs_decay))
-    #     for param_group in optimizer.param_groups:
-    #         param_group['lr'] = lr
-    #     print('Decay learning rate to lr: {}.'.format(lr))
 
 if use_cuda:
     net.cuda()
@@ -361,6 +323,27 @@ if __name__ == '__main__':
             test(epoch)
     else:
         test(0)
+
+
+    #CALCULATE MEAN & STD
+# for fname in all_nods_npy:
+#     if fname.endswith('.npy'):
+#         if fname[:-4] in blklst: continue
+#         data = np.load(fname)
+#         pixvlu += np.sum(data)
+#         # print("data.shape = " + str(data.shape))
+#         npix += np.prod(data.shape)
+# pixmean = pixvlu / float(npix)
+# pixvlu = 0
+# for fname in all_nods_npy:
+#     if fname.endswith('.npy'):
+#         if fname[:-4] in blklst: continue
+#         data = np.load(fname) - pixmean
+#         pixvlu += np.sum(data * data)
+
+# pixstd = np.sqrt(pixvlu / float(npix))
+# # pixstd /= 255
+# print(pixmean, pixstd)
 
    # tu.add_new_checkpoint(state, epoch)
 

@@ -1,8 +1,8 @@
 model:
-  name: 'RES-MULTIVIEWS'
+  name: 'NAS'
   params:
     config: [[4,4], [4,8], [8,8]]
-loss: 'MultiViews'
+loss: 'AngleLoss'
 dataset:
   normalize:
     mean: 178.83227827824444
