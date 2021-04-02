@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-CONFIG=nas-model-1-angle-expr-2
+CONFIG=nas-model-1-angle-expr-3
 maxeps=5
 
 for (( i=1; i<=$maxeps; i+=1)) 

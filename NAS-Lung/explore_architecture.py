@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # all_acc = np.array(all_acc)
     # print("Mean: ",all_acc.mean())
     # print(all_acc)
-    ckpt = T.load("log/ckpt/Model-1/checkpoint-5/ckpt.t7")
+    ckpt = T.load("log/ckpt/Model-1/checkpoint-1/ckpt.t7")
     print(ckpt)
     # ckpt = T.load("log/nas-model-1-cross-entropy-fold-0/best.model", map_location="cpu")
     # print(ckpt)
