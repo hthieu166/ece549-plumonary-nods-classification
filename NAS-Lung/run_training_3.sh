@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-CONFIG=multi-views-expr-1
+CONFIG=multi-views-expr-4
 maxeps=5
 
 for (( i=1; i<=$maxeps; i+=1)) 
