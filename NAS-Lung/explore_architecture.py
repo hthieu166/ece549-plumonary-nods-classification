@@ -6,15 +6,21 @@ import ipdb
 import numpy as np
 if __name__ == "__main__":
     # os.environ["CUDA_VISIBLE_DEVICES"] = "1" 
-    # all_acc = []
-    # for i in range(1,6):
-    #     ckpt = T.load("log/ckpt/Model-1/checkpoint-{}/ckpt.t7".format(i))
-    #     all_acc.append(ckpt["acc"])
+    all_acc = []
+    all_ckpts=[]
+    for i in range(1,6):
+        # ckpt = T.load("log/ckpt/Model-1/checkpoint-{}/ckpt.t7".format(i))
+        ckpt = T.load("log/nas-model-1-angle-expr-4-fold-{}/best.model".format(i))
+        all_acc.append(ckpt["eval"]["best_acc"])
+        all_ckpts.append(ckpt["epoch"])
+    print(all_acc)
+    print(all_ckpts)
+
     # all_acc = np.array(all_acc)
     # print("Mean: ",all_acc.mean())
     # print(all_acc)
-    ckpt = T.load("log/ckpt/Model-1/checkpoint-1/ckpt.t7")
-    print(ckpt)
+    # ckpt = T.load("log/ckpt/Model-1/checkpoint-1/ckpt.t7")
+    # print(ckpt)
     # ckpt = T.load("log/nas-model-1-cross-entropy-fold-0/best.model", map_location="cpu")
     # print(ckpt)
 

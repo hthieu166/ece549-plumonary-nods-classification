@@ -131,7 +131,7 @@ class ConvRes(nn.Module):
         if softmax == "angle":
             self.fc = AngleLinear(in_features=self.last_channel, out_features=2)
         elif softmax == "normal":
-            self.fc = nn.Linear(in_features=self.last_channel, out_features=2)
+            self.fc = AngleLinear(in_features=self.last_channel, out_features=2, get_phi_theta = False)
         else:
             print("Softmax option does not support!")
             raise
@@ -153,6 +153,7 @@ class ConvRes(nn.Module):
         out = out.view(out.size(0), -1)
         if debug:
             print(out.size())
+        
         out = self.fc(out)
         return out
 

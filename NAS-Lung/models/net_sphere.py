@@ -107,7 +107,7 @@ class LSoftmaxLinear(nn.Module):
 
 
 class AngleLinear(nn.Module):
-    def __init__(self, in_features, out_features, m=4, phiflag=True):
+    def __init__(self, in_features, out_features, m=4, phiflag=True, get_phi_theta=True):
         super(AngleLinear, self).__init__()
         self.in_features = in_features
         self.out_features = out_features
@@ -115,6 +115,7 @@ class AngleLinear(nn.Module):
         self.weight.data.uniform_(-1, 1).renorm_(2, 1, 1e-5).mul_(1e5)
         self.phiflag = phiflag
         self.m = m
+        self.get_phi_theta = get_phi_theta
         # self.mlambda = [
         #     lambda x: x ** 0,
         #     lambda x: x ** 1,
@@ -149,7 +150,10 @@ class AngleLinear(nn.Module):
 
         cos_theta = cos_theta * xlen.view(-1, 1)
         phi_theta = phi_theta * xlen.view(-1, 1)
-        output = (cos_theta, phi_theta)
+        if self.get_phi_theta:
+            output = (cos_theta, phi_theta)
+        else:
+            output = cos_theta
         return output  # size=(B,Classnum,2)
 
 

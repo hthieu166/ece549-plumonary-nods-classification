@@ -169,7 +169,7 @@ else:
     tu.log('args.savemodel : ' + args.savemodel)
     if  cfg.model_name == "NAS":
         tu.log("Running NAS")
-        if cfg.loss == "CrossEntropy":
+        if cfg.loss_name == "CrossEntropy":
             net = ConvRes(cfg.model_config["config"], softmax="normal")
         else:
             net = ConvRes(cfg.model_config["config"], softmax="angle")
@@ -216,26 +216,26 @@ if use_cuda:
     net = torch.nn.DataParallel(net, device_ids=device_ids)
     cudnn.benchmark = False  # True
 
-if (cfg.loss == None):   
+if (cfg.loss_name == None):   
     take_first = False
     criterion = nn.CrossEntropyLoss()
-elif cfg.loss == "CrossEntropy": 
-    take_first = True
+elif cfg.loss_name == "CrossEntropy": 
+    take_first = False
     criterion = nn.CrossEntropyLoss()
-elif (cfg.loss == "AngleLoss"):
+elif (cfg.loss_name == "AngleLoss"):
     take_first = True
     criterion = AngleLoss()
-elif (cfg.loss == "MultiViews"):
+elif (cfg.loss_name == "MultiViews"):
     take_first = True
-    criterion = MultiViewsLoss()
-elif (cfg.loss == "MultiViewsContrast"):
+    criterion = MultiViewsLoss(cfg.loss)
+elif (cfg.loss_name == "MultiViewsContrast"):
     take_first = True
     criterion = MultiViewsContrastLoss()
 else:
     print("Loss function does not support!")
     raise 
 
-tu.log("Using loss: " + cfg.loss)
+tu.log("Using loss: " + cfg.loss_name)
 
 optimizer = optim.Adam(net.parameters(), lr=cfg.train_params["init_lr"], betas=(args.beta1, args.beta2))
 

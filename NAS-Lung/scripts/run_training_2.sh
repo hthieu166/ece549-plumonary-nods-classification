@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
-CONFIG=nas-model-1-angle-expr-4
-CUDA_VISIBLE_DEVICES=1
+CONFIG=multi-views-expr-5
+CUDA_VISIBLE_DEVICES=0
 maxeps=5
 
 for (( i=1; i<=$maxeps; i+=1)) 

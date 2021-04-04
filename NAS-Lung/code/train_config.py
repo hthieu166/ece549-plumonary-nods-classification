@@ -16,6 +16,10 @@ class Config():
         #Train params
         self.train_params   = self._config["train_params"] 
         #Loss
+        if type(self._config["loss"]) == str:
+            self.loss_name = self._config["loss"]
+        else:
+            self.loss_name = self._config["loss"]["name"]
         self.loss = self._config["loss"]
 
     @staticmethod
