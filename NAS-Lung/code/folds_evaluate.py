@@ -5,7 +5,10 @@ import argparse
 import torch
 import ipdb
 import pandas as pd
-import os 
+import sys
+import os
+sys.path.insert(0, os.path.abspath(".."))
+sys.path.insert(0, os.path.abspath("."))
 def folds_evaluate(args):
     group = osp.join(args.log_dir, "{}-*".format(args.exp_name))
     folds = sorted(glob.glob(group))
