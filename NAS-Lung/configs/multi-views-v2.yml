@@ -1,5 +1,5 @@
 model:
-  name: 'RES-MULTIVIEWS'
+  name: 'RES-MULTIVIEWS-V2'
   params:
     config: [[4,4], [4,8], [8,8]]
 loss: 

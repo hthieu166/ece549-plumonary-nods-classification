@@ -17,6 +17,7 @@ from models.dpn3d import *
 from models.net_sphere import *
 from models.cnn_res_se import *
 from models.cnn_res_multi_view import *
+from models.cnn_res_multi_view_v2 import *
 from losses.loss_multiview import *
 # from utils import progress_bar
 from torch.autograd import Variable
@@ -67,7 +68,12 @@ pixvlu, npix = 0, 0
 
 #### LOAD CONFIG ###
 cfg = Config(args.config_file)
-log_dir = osp.join(args.log_dir, cfg.experiment_id+"-fold-"+str(args.fold)) if args.eval_mode == "1fold" else osp.join(args.log_dir, cfg.experiment_id)
+if args.mode == "train":
+    log_dir = osp.join(args.log_dir, 
+            cfg.experiment_id+"-fold-"+str(args.fold)) if args.eval_mode == "1fold" else osp.join(args.log_dir, cfg.experiment_id)
+else:
+    log_dir = osp.join(args.log_dir, 
+            args.mode + cfg.experiment_id+"-fold-"+str(args.fold)) if args.eval_mode == "1fold" else osp.join(args.log_dir, cfg.experiment_id)
 tu = TrainUtils(log_dir, ckpt_every = cfg.train_params["ckpt_every"], train_config_dict = cfg._config) 
 
 #### FOLDS FOR EVALUATE ###
@@ -147,50 +153,33 @@ testset = lunanod(preprocesspath, tefnamelst, telabellst, tefeatlst, train=False
 testloader = torch.utils.data.DataLoader(testset, batch_size=cfg.train_params["batch_size"], shuffle=False, num_workers=args.num_workers)
 
 # Model
-if args.resume:
+tu.log('==> Building model..')
+tu.log('args.savemodel : ' + args.savemodel)
+if  cfg.model_name == "NAS":
+    tu.log("Running NAS")
+    if cfg.loss_name == "CrossEntropy":
+        net = ConvRes(cfg.model_config["config"], softmax="normal")
+    else:
+        net = ConvRes(cfg.model_config["config"], softmax="angle")
+elif cfg.model_name == "DPN3D":
+    net = DPN92_3D()
+elif cfg.model_name == "SE-RES":
+    net = ConvResSE(cfg.model_config["config"])
+elif cfg.model_name == "RES-MULTIVIEWS":
+    net = ConvResMultiViews(cfg.model_config["config"])
+elif cfg.model_name == "RES-MULTIVIEWS-V2":
+    net = ConvResMultiViewsV2(cfg.model_config["config"])
+else: 
+    print("Unsupported model ", cfg.model_name, "!")
+    raise  
+tu.log("Running model: " + cfg.model_name)
+if args.savemodel != "":
     print('==> Resuming from checkpoint..')
-    # print(args.savemodel)
-    # if args.savemodel == '':
-    #     logging.info('==> Resuming from checkpoint..')
-    #     assert os.path.isdir(savemodelpath), 'Error: no checkpoint directory found!'
-    #     checkpoint = torch.load(savemodelpath + 'ckpt.t7')
-        
-    # else:
-    #     logging.info('==> Resuming from checkpoint..')
-    #     assert os.path.isdir(savemodelpath), 'Error: no checkpoint directory found!'
-    #     checkpoint = torch.load(args.savemodel)
     checkpoint = tu.resume_from_ckpt(args.savemodel)
-    net = checkpoint['net']
-    best_acc = checkpoint['acc']
+    best_acc = checkpoint['eval']['acc']
     start_epoch = checkpoint['epoch']
-    print(start_epoch)
-else:
-    tu.log('==> Building model..')
-    tu.log('args.savemodel : ' + args.savemodel)
-    if  cfg.model_name == "NAS":
-        tu.log("Running NAS")
-        if cfg.loss_name == "CrossEntropy":
-            net = ConvRes(cfg.model_config["config"], softmax="normal")
-        else:
-            net = ConvRes(cfg.model_config["config"], softmax="angle")
-    elif cfg.model_name == "DPN3D":
-        net = DPN92_3D()
-    elif cfg.model_name == "SE-RES":
-        net = ConvResSE(cfg.model_config["config"])
-    elif cfg.model_name == "RES-MULTIVIEWS":
-        net = ConvResMultiViews(cfg.model_config["config"])
-    else: 
-        print("Unsupported model ", cfg.model_name, "!")
-        raise  
-    tu.log("Running model: " + cfg.model_name)
-    if args.savemodel != "":
-        checkpoint = torch.load(args.savemodel)
-        finenet = checkpoint
-        Low_rankmodel_dic = net.state_dict()
-        finenet = {k: v for k, v in finenet.items() if k in Low_rankmodel_dic}
-        Low_rankmodel_dic.update(finenet)
-        net.load_state_dict(Low_rankmodel_dic)
-        print("net_loaded")
+    net.load_state_dict(checkpoint["net"].state_dict())
+    print("net_loaded")
 
 lr = cfg.train_params["init_lr"]
 
@@ -268,11 +257,8 @@ def train(epoch):
     train_acc = correct.data.item() / float(total)
     tu.add_train_info(epoch, {
         "acc": train_acc, "lr": lr, "loss": train_loss})
-    # print('ep ' + str(epoch) + ' tracc ' + str(correct.data.item() / float(total)) + ' lr ' + str(lr))
-    # logging.info(
-    #     'ep ' + str(epoch) + ' tracc ' + str(correct.data.item() / float(total)) + ' lr ' + str(lr))
 
-def test(epoch):
+def test(epoch, infer = False):
     epoch_start_time = time.time()
     global best_acc
     global best_acc_gbt
@@ -281,6 +267,8 @@ def test(epoch):
     correct = 0
     total = 0
     TP = FP = FN = TN = 0
+    test_feats  = []
+    test_preds  = []
     for batch_idx, (inputs, targets, feat) in enumerate(testloader):
         if use_cuda:
             inputs, targets = inputs.cuda(), targets.cuda()
@@ -291,8 +279,12 @@ def test(epoch):
         loss = criterion(outputs, targets)
         test_loss += loss.data.item()
 
+        if infer == True:
+            test_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
+            test_preds.append(outputs[0].cpu().detach().numpy())
         if take_first == True:
             outputs = outputs[0]
+        
         _, predicted = torch.max(outputs.data, 1)
         total += targets.size(0)
         correct += predicted.eq(targets.data).cpu().sum()
@@ -300,7 +292,14 @@ def test(epoch):
         TN += ((predicted == 0) & (targets.data == 0)).cpu().sum()
         FN += ((predicted == 0) & (targets.data == 1)).cpu().sum()
         FP += ((predicted == 1) & (targets.data == 0)).cpu().sum()
-
+    if infer == True:
+        test_feats = np.hstack(test_feats)
+        test_preds = np.vstack(test_preds)
+        out_dir = osp.join("log", "infer-"+cfg.experiment_id)
+        os.makedirs(out_dir, exist_ok = True)
+        np.save(osp.join(out_dir, "deep-feat-%s" % str(args.fold)), test_feats)
+        np.save(osp.join(out_dir, "preds-%s" % str(args.fold)), test_preds)
+        
     # Save checkpoint.
     acc = 100. * correct.data.item() / total
     tpr = 100. * TP.data.item() / (TP.data.item() + FN.data.item())
@@ -321,8 +320,10 @@ if __name__ == '__main__':
         for epoch in range(start_epoch + 1, start_epoch + cfg.train_params["n_epochs"] + 1):
             train(epoch)
             test(epoch)
-    else:
+    elif args.mode == "test":
         test(0)
+    elif args.mode == "infer":
+        test(0, infer=True)
 
 
     #CALCULATE MEAN & STD
