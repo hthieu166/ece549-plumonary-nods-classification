@@ -17,3 +17,4 @@ def plot_slices(nod_npy, axis = 0):
             axs[i][j].imshow(im, cmap = "bone")
             axs[i][j].axis("off")
             axs[i][j].set_title(str(idx))
+            
