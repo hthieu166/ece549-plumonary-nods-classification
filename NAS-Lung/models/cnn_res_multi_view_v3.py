@@ -9,10 +9,10 @@ sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath("."))
 from models.cnn_res import *
 
-class ConvResMultiViews(ConvRes):
+class ConvResMultiViewsV3(ConvRes):
     def __init__(self, config, softmax = "angle"):
         print(config)
-        super(ConvResMultiViews, self).__init__(config, softmax = "angle")
+        super(ConvResMultiViewsV3, self).__init__(config, softmax = "angle")
     
     def forward(self, inputs):
         batch_size,_, D, W, H = inputs.shape
@@ -27,13 +27,13 @@ class ConvResMultiViews(ConvRes):
             out = self.conv2(out)
             out, sp_att = self.first_cbam(out,get_sp_attention = True)
             out = self.layers(out)
+            out_lst.append(out.view(out.size(0), -1))
             out = self.avg_pooling(out)
             out = out.view(out.size(0), -1)
             out_fc = self.fc(out)
-            out_lst.append(out)
-            out_fc_lst.append(out_fc[0])
+            out_fc_lst.append(out_fc)
             spc_att_lst.append(sp_att)
-        out_fc = self.fc(out_lst[0])
+        out_fc = out_fc_lst[0]
         return (out_fc[0], out_fc, out_lst, out_fc_lst, spc_att_lst)
 if __name__ == "__main__":
     net = ConvResMultiViews( [[4,4], [4,8], [8,8]])

@@ -32,6 +32,7 @@ import tqdm
 from code.train_utils import TrainUtils
 from code.train_config import Config
 from code.features_fusion import FeaturesFusion
+
 print("Total cuda devices", torch.cuda.device_count())
 # preprocesspath  = '/media/DATA/LUNA16/crop/'
 preprocesspath  = '../../data/crop/'
@@ -56,7 +57,6 @@ parser.add_argument("--log_dir", type=str, default="./log", help = "select dir f
 
 args = parser.parse_args()
 
-torch.manual_seed(100)
 CROPSIZE = 32
 gbtdepth = 1
 
@@ -242,6 +242,7 @@ def train(epoch):
     train_deep_feats    = []
     train_low_lvl_feats = []
     train_targets       = []
+
     with tqdm.tqdm(total=len(trainloader)) as pbar:
         for batch_idx, (inputs, targets, feat) in enumerate(trainloader):
             if use_cuda:
@@ -253,6 +254,7 @@ def train(epoch):
             loss.backward()
             optimizer.step()
             train_loss += loss.data.item()
+            
             #Gathering features
             train_deep_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
             train_targets.append(targets.cpu().detach().numpy())
@@ -264,10 +266,12 @@ def train(epoch):
             total += targets.size(0)
             correct += predicted.eq(targets.data).cpu().sum()
             pbar.update()
-    train_deep_feats   = np.hstack(train_deep_feats)
-    train_low_lvl_feats= np.concatenate(train_low_lvl_feats, axis=0) 
-    train_targets      = np.hstack(train_targets)
-    ff.fit(train_deep_feats, train_low_lvl_feats, train_targets)
+            # if batch_idx == 3:
+            #     break
+    # train_deep_feats   = np.hstack(train_deep_feats)
+    # train_low_lvl_feats= np.concatenate(train_low_lvl_feats, axis=0) 
+    # train_targets      = np.hstack(train_targets)
+    # ff.fit(train_deep_feats, train_low_lvl_feats, train_targets)
     train_acc = correct.data.item() / float(total)
     tu.add_train_info(epoch, {
         "acc": train_acc, "lr": lr, "loss": train_loss})
@@ -284,9 +288,7 @@ def test(epoch, infer = False):
     test_feats = []
     test_fcs   = []
     test_sp_att= []
-    test_deep_feats    = []
-    test_low_lvl_feats = []
-    test_targets       = []
+    deep_correct = 0
     for batch_idx, (inputs, targets, feat) in enumerate(testloader):
         if use_cuda:
             inputs, targets = inputs.cuda(), targets.cuda()
@@ -297,25 +299,28 @@ def test(epoch, infer = False):
         # outputs = net(inputs, multi_view_feats = True)
         # loss = criterion(outputs[1], targets)
         test_loss += loss.data.item()
-        #Gathering features
-        test_deep_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
-        test_targets.append(targets.cpu().detach().numpy())
-        test_low_lvl_feats.append(feat)
-
-        if infer == True:
-            test_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
-            test_fcs.append  (torch.stack(outputs[3]).cpu().detach().numpy())
-            test_sp_att.append(torch.stack(outputs[4]).cpu().detach().numpy())
+        test_deep_feats    = torch.stack(outputs[2]).cpu().detach().numpy()
+        test_low_lvl_feats = feat  
+        
         if take_first == True:
             outputs = outputs[0]
-        
-        _, predicted = torch.max(outputs.data, 1)
+        _, deep_predicted = torch.max(outputs.data, 1)
+        # predicted = torch.Tensor(ff.predict(test_deep_feats, test_low_lvl_feats))
+        predicted = deep_predicted
         total += targets.size(0)
+        deep_correct += deep_predicted.eq(targets.data).cpu().sum()
+        # targets = targets.cpu()
         correct += predicted.eq(targets.data).cpu().sum()
         TP += ((predicted == 1) & (targets.data == 1)).cpu().sum()
         TN += ((predicted == 0) & (targets.data == 0)).cpu().sum()
         FN += ((predicted == 0) & (targets.data == 1)).cpu().sum()
         FP += ((predicted == 1) & (targets.data == 0)).cpu().sum()
+
+        if infer == True:
+            test_feats.append (torch.stack(outputs[2]).cpu().detach().numpy())
+            test_fcs.append   (torch.stack(outputs[3]).cpu().detach().numpy())
+            test_sp_att.append(torch.stack(outputs[4]).cpu().detach().numpy())
+    
     if infer == True:
         test_feats = np.hstack(test_feats)
         test_fcs   = np.hstack(test_fcs)
@@ -325,15 +330,12 @@ def test(epoch, infer = False):
         np.save(osp.join(out_dir, "deep-feat-%s" % str(args.fold)), test_feats)
         np.save(osp.join(out_dir, "preds-%s" % str(args.fold)), test_fcs)
         np.save(osp.join(out_dir, "sp-att-%s" % str(args.fold)), test_sp_att)
-    test_deep_feats   = np.hstack(test_deep_feats)
-    test_low_lvl_feats= np.concatenate(test_low_lvl_feats, axis=0) 
-    test_targets      = np.hstack(test_targets)
-    fs_pred = ff.predict(test_deep_feats, test_low_lvl_feats)
-    print("combine_acc: ", (fs_pred == test_targets).mean())
+        
     # Save checkpoint.
     acc = 100. * correct.data.item() / total
     tpr = 100. * TP.data.item() / (TP.data.item() + FN.data.item())
     fpr = 100. * FP.data.item() / (FP.data.item() + TN.data.item())
+    tu.log("Deep-pred-acc : %.03f" % (100. * deep_correct.data.item() / total))
     state = {
         'net': net.module if use_cuda else net,
         'epoch': epoch,
@@ -341,7 +343,8 @@ def test(epoch, infer = False):
             'acc': acc,
             'tpr': tpr,
             'fpr': fpr
-        }
+        },
+        # 'fusion_model': ff.m
     }
     tu.add_test_ckpt(epoch, state)
 

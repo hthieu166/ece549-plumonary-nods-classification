@@ -1,0 +1,19 @@
+model:
+  name: 'RES-MULTIVIEWS-V3'
+  params:
+    config: [[4,4], [4,8], [8,8]]
+loss: 
+  name: 'MultiViews'
+  params:
+    cls_loss: 'AngleLoss'
+dataset:
+  normalize:
+    mean: 178.83227827824444
+    std:  50.05896544303765
+train_params:
+  batch_size: 8
+  n_epochs: 400
+  ckpt_every: 200
+  init_lr: 0.0002
+  lr_decay: 0.1
+  decay_epochs: []
