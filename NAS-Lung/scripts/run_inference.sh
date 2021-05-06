@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+# CONFIG=nas-model-1-angle-expr-4
 CONFIG=multi-views-expr-4
 maxeps=5
 

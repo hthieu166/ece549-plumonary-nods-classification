@@ -10,15 +10,17 @@ class SELayer3D(nn.Module):
         self.r = r
         self.avg_pool = nn.AdaptiveAvgPool3d(1)
         num_channels_reduced = num_chanels // r
-        self.fc1 = nn.Linear(num_chanels, num_channels_reduced)
-        self.fc2 = nn.Linear(num_channels_reduced, num_chanels)
+        self.fc1 = nn.Linear(num_chanels, num_channels_reduced, bias = False)
+        self.fc2 = nn.Linear(num_channels_reduced, num_chanels, bias = False)
         self.relu= nn.ReLU()
+        # self.bn  = nn.BatchNorm1d(num_channels_reduced)
         self.sigmoid =nn.Sigmoid()
     
     def forward(self, inputs):
         batch_size, C, D, H, W = inputs.shape
         squeeze = self.avg_pool(inputs).view(batch_size, C)
         out     = self.fc1(squeeze)
+        # out     = self.bn(out)
         out     = self.relu(out)
         out     = self.fc2(out)
         out     = self.sigmoid(out)

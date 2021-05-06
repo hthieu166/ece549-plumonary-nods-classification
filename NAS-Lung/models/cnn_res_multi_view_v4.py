@@ -9,20 +9,23 @@ sys.path.insert(0, os.path.abspath(".."))
 sys.path.insert(0, os.path.abspath("."))
 from models.cnn_res import *
 
-class ConvResMultiViews(ConvRes):
+class ConvResMultiViewsV4(ConvRes):
     def __init__(self, config, softmax = "angle"):
         print(config)
-        super(ConvResMultiViews, self).__init__(config, softmax = "angle")
+        super(ConvResMultiViewsV4, self).__init__(config, softmax = "angle")
     
     def forward(self, inputs):
         batch_size,_, D, W, H = inputs.shape
         v1 = torch.swapaxes(inputs, 2, 3)
         v2 = torch.swapaxes(inputs, 2, 4)
         v3 = torch.swapaxes(inputs, 3, 4)
+        v4 = torch.flip(inputs,(2,3))
+        v5 = torch.flip(inputs,(2,4))
+        v6 = torch.flip(inputs,(3,4))
         out_lst = []
         out_fc_lst = []
         spc_att_lst= []
-        for v in [inputs, v1,v2,v3]:
+        for v in [inputs, v1,v2,v3,v4,v5,v6]:
             out = self.conv1(v)
             out = self.conv2(out)
             out, sp_att = self.first_cbam(out,get_sp_attention = True)

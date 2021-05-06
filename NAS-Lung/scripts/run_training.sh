@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-CONFIG=multi-views-v2
+CONFIG=se-res-model-1
 maxeps=5
 
 for (( i=1; i<=$maxeps; i+=1)) 
