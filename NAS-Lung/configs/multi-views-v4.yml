@@ -1,8 +1,7 @@
 model:
-  name: 'SE-RES'
+  name: 'RES-MULTIVIEWS-V4'
   params:
-    config: 
-      stage: [[4,4], [4,8], [8,8]]
+    config: [[4,4], [4,8], [8,8]]
 loss: 
   name: 'MultiViews'
   params:
@@ -13,9 +12,8 @@ dataset:
     std:  50.05896544303765
 train_params:
   batch_size: 8
-  n_epochs: 70
-  ckpt_every: 50
-  init_lr: 0.02
+  n_epochs: 400
+  ckpt_every: 200
+  init_lr: 0.0002
   lr_decay: 0.1
-  decay_epochs: [40]
-
+  decay_epochs: []

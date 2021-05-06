@@ -28,7 +28,7 @@ def process_one_case(annot_dict, case_id):
   for roi in annot_dict[case_id]:
     roi_out_dir = osp.join(out_dir, str(roi))
     os.makedirs(roi_out_dir, exist_ok=True)
-    extractor = featureextractor.RadiomicsFeatureExtractor()
+    extractor = featureextractor.RadiomicsFeatureExtractor(correctMask = True)
     for annot in annot_dict[case_id][roi]:
       if annot in nrrd_annot_files:
         result  = extractor.execute(nrrd_image_file, nrrd_annot_files[annot])
@@ -70,7 +70,8 @@ def run_main():
     p.map(func,todo)
 
 if __name__ == "__main__":
-  run_main()
+  process_one_case(annot_dict, 311)
+  # run_main()
   # files = sorted(glob.glob(osp.join(OUT_DIR, "LIDC-IDRI-0003/1/*.pkl")))
   # for f in files:
   #   read_feats(f)

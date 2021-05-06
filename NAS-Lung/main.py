@@ -18,6 +18,7 @@ from models.cnn_res_se import *
 from models.cnn_res_multi_view import *
 from models.cnn_res_multi_view_v2 import *
 from models.cnn_res_multi_view_v3 import *
+from models.cnn_res_multi_view_v4 import *
 from losses.loss_multiview import *
 # from utils import progress_bar
 from torch.autograd import Variable
@@ -170,6 +171,8 @@ elif cfg.model_name == "RES-MULTIVIEWS-V2":
     net = ConvResMultiViewsV2(cfg.model_config["config"])
 elif cfg.model_name == "RES-MULTIVIEWS-V3":
     net = ConvResMultiViewsV3(cfg.model_config["config"])
+elif cfg.model_name == "RES-MULTIVIEWS-V4":
+    net = ConvResMultiViewsV4(cfg.model_config["config"])
 else: 
     print("Unsupported model ", cfg.model_name, "!")
     raise  
@@ -230,7 +233,7 @@ tu.log("Using loss: " + cfg.loss_name)
 optimizer = optim.Adam(net.parameters(), lr=cfg.train_params["init_lr"], betas=(args.beta1, args.beta2))
 
 # Using features fusion
-ff = FeaturesFusion()
+ff = FeaturesFusion(False)
 # Training
 def train(epoch):
     print("\nEpoch: " + str(epoch))
@@ -239,9 +242,7 @@ def train(epoch):
     train_loss = 0
     correct = 0
     total = 0
-    train_deep_feats    = []
-    train_low_lvl_feats = []
-    train_targets       = []
+    ff.reset()
     with tqdm.tqdm(total=len(trainloader)) as pbar:
         for batch_idx, (inputs, targets, feat) in enumerate(trainloader):
             if use_cuda:
@@ -254,20 +255,14 @@ def train(epoch):
             optimizer.step()
             train_loss += loss.data.item()
             #Gathering features
-            train_deep_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
-            train_targets.append(targets.cpu().detach().numpy())
-            train_low_lvl_feats.append(feat)
-
+            ff.add_train_features(outputs, feat, targets)
             if take_first == True:
                 outputs = outputs[0]
             _, predicted = torch.max(outputs.data, 1)
             total += targets.size(0)
             correct += predicted.eq(targets.data).cpu().sum()
             pbar.update()
-    train_deep_feats   = np.hstack(train_deep_feats)
-    train_low_lvl_feats= np.concatenate(train_low_lvl_feats, axis=0) 
-    train_targets      = np.hstack(train_targets)
-    ff.fit(train_deep_feats, train_low_lvl_feats, train_targets)
+    ff.fit()
     train_acc = correct.data.item() / float(total)
     tu.add_train_info(epoch, {
         "acc": train_acc, "lr": lr, "loss": train_loss})
@@ -298,9 +293,7 @@ def test(epoch, infer = False):
         # loss = criterion(outputs[1], targets)
         test_loss += loss.data.item()
         #Gathering features
-        test_deep_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
-        test_targets.append(targets.cpu().detach().numpy())
-        test_low_lvl_feats.append(feat)
+        ff.add_test_features(outputs, feat, targets)
 
         if infer == True:
             test_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
@@ -316,6 +309,7 @@ def test(epoch, infer = False):
         TN += ((predicted == 0) & (targets.data == 0)).cpu().sum()
         FN += ((predicted == 0) & (targets.data == 1)).cpu().sum()
         FP += ((predicted == 1) & (targets.data == 0)).cpu().sum()
+    
     if infer == True:
         test_feats = np.hstack(test_feats)
         test_fcs   = np.hstack(test_fcs)
@@ -325,11 +319,10 @@ def test(epoch, infer = False):
         np.save(osp.join(out_dir, "deep-feat-%s" % str(args.fold)), test_feats)
         np.save(osp.join(out_dir, "preds-%s" % str(args.fold)), test_fcs)
         np.save(osp.join(out_dir, "sp-att-%s" % str(args.fold)), test_sp_att)
-    test_deep_feats   = np.hstack(test_deep_feats)
-    test_low_lvl_feats= np.concatenate(test_low_lvl_feats, axis=0) 
-    test_targets      = np.hstack(test_targets)
-    fs_pred = ff.predict(test_deep_feats, test_low_lvl_feats)
-    print("combine_acc: ", (fs_pred == test_targets).mean())
+    
+    fs_pred = ff.predict()
+    if (fs_pred != None):
+        print("combine_acc: ", (fs_pred == test_targets).mean())
     # Save checkpoint.
     acc = 100. * correct.data.item() / total
     tpr = 100. * TP.data.item() / (TP.data.item() + FN.data.item())
