@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
-CONFIG=multi-views-expr-5
+CONFIG=dpn3d
 CUDA_VISIBLE_DEVICES=0
 maxeps=5
 
-for (( i=1; i<=$maxeps; i+=1)) 
+for (( i=5; i<=$maxeps; i+=1)) 
 do
     echo "process $i epoch"
     python main.py --fold $i --config_file configs/$CONFIG.yml

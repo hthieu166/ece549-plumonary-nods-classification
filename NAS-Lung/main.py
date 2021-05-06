@@ -1,4 +1,3 @@
-'''Train CIFAR10 with PyTorch.'''
 from __future__ import print_function
 
 import torch
@@ -18,6 +17,8 @@ from models.net_sphere import *
 from models.cnn_res_se import *
 from models.cnn_res_multi_view import *
 from models.cnn_res_multi_view_v2 import *
+from models.cnn_res_multi_view_v3 import *
+from models.cnn_res_multi_view_v4 import *
 from losses.loss_multiview import *
 # from utils import progress_bar
 from torch.autograd import Variable
@@ -28,13 +29,17 @@ import glob
 import os.path as osp
 import ipdb
 import tqdm
-#Modified by hthieu
+# Modified by hthieu
 from code.train_utils import TrainUtils
 from code.train_config import Config
+from code.features_fusion import FeaturesFusion
+# Modified by hleu
+from dataloader import nlstnod
 
 print("Total cuda devices", torch.cuda.device_count())
+nlstpath  = '/mnt/nlst/nparray2/'
 # preprocesspath  = '/media/DATA/LUNA16/crop/'
-preprocesspath  = '../../data/crop/'
+preprocesspath  = './data/crop/'
 dataframe       = pd.read_csv('./data/annotationdetclsconvfnl_v3.csv',
                         names=['seriesuid', 'coordX', 'coordY', 'coordZ', 'diameter_mm', 'malignant'])
 SUBSETS_DIR      = './subsets/'
@@ -54,8 +59,11 @@ parser.add_argument("--config_file", type=str, default=None, help = "path to con
 parser.add_argument("--eval_mode", type=str, default= "1fold", help = "select mode for eval, 1fold or 5 folds")
 parser.add_argument("--log_dir", type=str, default="./log", help = "select dir for saving logs/checkpoints")
 
+parser.add_argument('--nlst', type=bool, default=False, help='test using NLST data')
+
 args = parser.parse_args()
 
+torch.manual_seed(100)
 CROPSIZE = 32
 gbtdepth = 1
 
@@ -132,25 +140,59 @@ for test_fold in fold:
 print("Total test nodules: ",len(teidlst))
 mxx = mxy = mxz = mxd = 0
 for srsid, label, x, y, z, d in zip(alllst, labellst, crdxlst, crdylst, crdzlst, dimlst):
-    
-    feat = np.zeros((CROPSIZE, CROPSIZE, CROPSIZE), dtype=float)
-
+    feat = np.array([d]).astype(np.float32)
     if srsid.split('-')[0] in teidlst:
         tefnamelst.append(srsid + '.npy')
         telabellst.append(int(label))
+
+if (args.nlst):
+    teidlst = sorted(glob.glob(nlstpath + '/*'))
+    print("Total test nodules: ",len(teidlst))
+
+    feat = np.zeros((CROPSIZE, CROPSIZE, CROPSIZE), dtype=float)
+
+    for file in teidlst:
+        tefnamelst.append(file.split('/')[-1])
+        telabellst.append(int(1))
         tefeatlst.append(feat)
-    else:
-        trfnamelst.append(srsid + '.npy')
-        trlabellst.append(int(label))
-        trfeatlst.append(feat)
 
-trainset = lunanod(preprocesspath, trfnamelst, trlabellst, trfeatlst, train=True, download=True,
-                   transform=transform_train)
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=cfg.train_params["batch_size"], shuffle=True, num_workers=args.num_workers)
+    testset = nlstnod(nlstpath, tefnamelst, telabellst, tefeatlst, train=False, download=True,
+                      transform=transform_test)
+    testloader = torch.utils.data.DataLoader(testset, batch_size=cfg.train_params["batch_size"], shuffle=False, num_workers=args.num_workers)
+else:  
+    alllst = dataframe['seriesuid'].tolist()[1:]
+    labellst = dataframe['malignant'].tolist()[1:]
+    crdxlst = dataframe['coordX'].tolist()[1:]
+    crdylst = dataframe['coordY'].tolist()[1:]
+    crdzlst = dataframe['coordZ'].tolist()[1:]
+    dimlst = dataframe['diameter_mm'].tolist()[1:]
+    # test id
+    teidlst = []
+    for test_fold in fold:
+        with open(osp.join(SUBSETS_DIR, "subset{}.txt".format(str(test_fold)))) as fo:
+            teidlst += [i.strip() for i in fo.readlines()]
+    print("Total test nodules: ",len(teidlst))
+    mxx = mxy = mxz = mxd = 0
+    for srsid, label, x, y, z, d in zip(alllst, labellst, crdxlst, crdylst, crdzlst, dimlst):
+        
+        feat = np.zeros((CROPSIZE, CROPSIZE, CROPSIZE), dtype=float)
 
-testset = lunanod(preprocesspath, tefnamelst, telabellst, tefeatlst, train=False, download=True,
-                  transform=transform_test)
-testloader = torch.utils.data.DataLoader(testset, batch_size=cfg.train_params["batch_size"], shuffle=False, num_workers=args.num_workers)
+        if srsid.split('-')[0] in teidlst:
+            tefnamelst.append(srsid + '.npy')
+            telabellst.append(int(label))
+            tefeatlst.append(feat)
+        else:
+            trfnamelst.append(srsid + '.npy')
+            trlabellst.append(int(label))
+            trfeatlst.append(feat)
+
+    trainset = lunanod(preprocesspath, trfnamelst, trlabellst, trfeatlst, train=True, download=True,
+                       transform=transform_train)
+    trainloader = torch.utils.data.DataLoader(trainset, batch_size=cfg.train_params["batch_size"], shuffle=True, num_workers=args.num_workers)
+
+    testset = lunanod(preprocesspath, tefnamelst, telabellst, tefeatlst, train=False, download=True,
+                      transform=transform_test)
+    testloader = torch.utils.data.DataLoader(testset, batch_size=cfg.train_params["batch_size"], shuffle=False, num_workers=args.num_workers)
 
 # Model
 tu.log('==> Building model..')
@@ -169,6 +211,10 @@ elif cfg.model_name == "RES-MULTIVIEWS":
     net = ConvResMultiViews(cfg.model_config["config"])
 elif cfg.model_name == "RES-MULTIVIEWS-V2":
     net = ConvResMultiViewsV2(cfg.model_config["config"])
+elif cfg.model_name == "RES-MULTIVIEWS-V3":
+    net = ConvResMultiViewsV3(cfg.model_config["config"])
+elif cfg.model_name == "RES-MULTIVIEWS-V4":
+    net = ConvResMultiViewsV4(cfg.model_config["config"])
 else: 
     print("Unsupported model ", cfg.model_name, "!")
     raise  
@@ -228,6 +274,8 @@ tu.log("Using loss: " + cfg.loss_name)
 
 optimizer = optim.Adam(net.parameters(), lr=cfg.train_params["init_lr"], betas=(args.beta1, args.beta2))
 
+# Using features fusion
+ff = FeaturesFusion(False)
 # Training
 def train(epoch):
     print("\nEpoch: " + str(epoch))
@@ -236,6 +284,7 @@ def train(epoch):
     train_loss = 0
     correct = 0
     total = 0
+    ff.reset()
     with tqdm.tqdm(total=len(trainloader)) as pbar:
         for batch_idx, (inputs, targets, feat) in enumerate(trainloader):
             if use_cuda:
@@ -247,18 +296,20 @@ def train(epoch):
             loss.backward()
             optimizer.step()
             train_loss += loss.data.item()
+            #Gathering features
+            ff.add_train_features(outputs, feat, targets)
             if take_first == True:
                 outputs = outputs[0]
             _, predicted = torch.max(outputs.data, 1)
             total += targets.size(0)
             correct += predicted.eq(targets.data).cpu().sum()
             pbar.update()
-
+    ff.fit()
     train_acc = correct.data.item() / float(total)
     tu.add_train_info(epoch, {
         "acc": train_acc, "lr": lr, "loss": train_loss})
 
-def test(epoch, infer = False):
+def test(epoch, infer = False, nlst=False):
     epoch_start_time = time.time()
     global best_acc
     global best_acc_gbt
@@ -267,21 +318,29 @@ def test(epoch, infer = False):
     correct = 0
     total = 0
     TP = FP = FN = TN = 0
-    test_feats  = []
-    test_preds  = []
+    test_feats = []
+    test_fcs   = []
+    test_sp_att= []
+    test_deep_feats    = []
+    test_low_lvl_feats = []
+    test_targets       = []
     for batch_idx, (inputs, targets, feat) in enumerate(testloader):
         if use_cuda:
             inputs, targets = inputs.cuda(), targets.cuda()
 
         inputs, targets = Variable(inputs, requires_grad=False), Variable(targets)
         outputs = net(inputs)
-
         loss = criterion(outputs, targets)
+        # outputs = net(inputs, multi_view_feats = True)
+        # loss = criterion(outputs[1], targets)
         test_loss += loss.data.item()
+        #Gathering features
+        ff.add_test_features(outputs, feat, targets)
 
         if infer == True:
             test_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
-            test_preds.append(outputs[0].cpu().detach().numpy())
+            test_fcs.append  (torch.stack(outputs[3]).cpu().detach().numpy())
+            test_sp_att.append(torch.stack(outputs[4]).cpu().detach().numpy())
         if take_first == True:
             outputs = outputs[0]
         
@@ -292,18 +351,31 @@ def test(epoch, infer = False):
         TN += ((predicted == 0) & (targets.data == 0)).cpu().sum()
         FN += ((predicted == 0) & (targets.data == 1)).cpu().sum()
         FP += ((predicted == 1) & (targets.data == 0)).cpu().sum()
+    
     if infer == True:
         test_feats = np.hstack(test_feats)
-        test_preds = np.vstack(test_preds)
+        test_fcs   = np.hstack(test_fcs)
+        test_sp_att= np.hstack(test_sp_att)
         out_dir = osp.join("log", "infer-"+cfg.experiment_id)
         os.makedirs(out_dir, exist_ok = True)
-        np.save(osp.join(out_dir, "deep-feat-%s" % str(args.fold)), test_feats)
-        np.save(osp.join(out_dir, "preds-%s" % str(args.fold)), test_preds)
-        
+#     fs_pred = ff.predict()
+#     if (fs_pred != None):
+#         print("combine_acc: ", (fs_pred == test_targets).mean())
+        if (nlst):
+            np.save(osp.join(out_dir, "deep-feat-nlst%s" % str(args.fold)), test_feats)
+            np.save(osp.join(out_dir, "preds-nlst%s" % str(args.fold)), test_preds)
+        else:
+          np.save(osp.join(out_dir, "deep-feat-%s" % str(args.fold)), test_feats)
+          np.save(osp.join(out_dir, "preds-%s" % str(args.fold)), test_fcs)
+          np.save(osp.join(out_dir, "sp-att-%s" % str(args.fold)), test_sp_att)
     # Save checkpoint.
+    print(FP.data.item(), TN.data.item())
     acc = 100. * correct.data.item() / total
     tpr = 100. * TP.data.item() / (TP.data.item() + FN.data.item())
-    fpr = 100. * FP.data.item() / (FP.data.item() + TN.data.item())
+    if (nlst):
+        fpr = 100. * FP.data.item() / (FP.data.item() + TN.data.item()+1)
+    else:
+        fpr = 100. * FP.data.item() / (FP.data.item() + TN.data.item())
     state = {
         'net': net.module if use_cuda else net,
         'epoch': epoch,
@@ -319,12 +391,21 @@ if __name__ == '__main__':
     if args.mode == "train":
         for epoch in range(start_epoch + 1, start_epoch + cfg.train_params["n_epochs"] + 1):
             train(epoch)
-            test(epoch)
+            if (args.nlst):
+                test(epoch, nlst=True)
+            else:
+                test(epoch)
     elif args.mode == "test":
-        test(0)
-    elif args.mode == "infer":
-        test(0, infer=True)
+        if (args.nlst):
+            test(0, nlst=True)
+        else:
+            test(0)
 
+    elif args.mode == "infer":
+        if (args.nlst):
+            test(0, infer=True, nlst=True)
+        else:
+            test(0, infer=True)
 
     #CALCULATE MEAN & STD
 # for fname in all_nods_npy:

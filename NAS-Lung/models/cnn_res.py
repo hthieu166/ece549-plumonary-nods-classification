@@ -27,7 +27,7 @@ class ResCBAMLayer(nn.Module):
         self.sp_Softmax = nn.Softmax(1)
         self.sp_sigmoid = nn.Sigmoid()
     
-    def forward(self, x):
+    def forward(self, x, get_sp_attention = False):
         x_ch_avg_pool = self.ch_AvgPool(x).view(x.size(0), -1)
         x_ch_max_pool = self.ch_MaxPool(x).view(x.size(0), -1)
         # x_ch_avg_linear = self.ch_Linear2(self.ch_Linear1(x_ch_avg_pool))
@@ -42,7 +42,10 @@ class ResCBAMLayer(nn.Module):
         sp_out = self.sp_Conv(sp_conv1)
         sp_out = self.sp_sigmoid(sp_out.view(x.size(0), -1)).view(x.size(0), 1, x.size(2), x.size(3), x.size(4))
         out = sp_out * x + x
-        return out
+        if get_sp_attention == True:
+            return out, sp_out
+        else:
+            return out
 
 
 def make_conv3d(in_channels: int, out_channels: int, kernel_size: typing.Union[int, tuple], stride: int,
@@ -135,8 +138,7 @@ class ConvRes(nn.Module):
         else:
             print("Softmax option does not support!")
             raise
-
-    def forward(self, inputs):
+    def do_forward(self, inputs):
         if debug:
             print(inputs.size())
         out = self.conv1(inputs)
@@ -154,8 +156,23 @@ class ConvRes(nn.Module):
         if debug:
             print(out.size())
         
-        out = self.fc(out)
         return out
+
+    def forward(self, inputs, multi_view_feats = False):
+        if multi_view_feats == False:
+            out = self.do_forward(inputs)
+            out = self.fc(out)
+            return out
+        else:
+            v1 = torch.swapaxes(inputs, 2, 3)
+            v2 = torch.swapaxes(inputs, 2, 4)
+            v3 = torch.swapaxes(inputs, 3, 4)
+            out_lst = []
+            for v in [inputs, v1, v2, v3]:
+                out_lst.append(self.do_forward(v))
+            out_fc = self.fc(out_lst[0])
+            return (out_fc[0], out_fc, out_lst)
+            
 
 
 def test():
