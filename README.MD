@@ -17,8 +17,8 @@ Our implementation is encoupled inside the NAS-Lung folder.
 * Folder `eval_result/` contains all the validation evaluations generated automatically.
 * File `losses/loss_multiview.py` contains the implementation of the multi-views consistency loss function.
 * Folder `models/` contains all the implmentation of deep architectures, files `dpn3d.py` (taken from the Deep-Lung), `cnn_res.py`  `net_sphere.py` are from the authors of NAS-Lung and Deep-Lung (for reproducing results purposes) with small modifications. The rest are our NAS-Lung with multi-views consistency branch and 3D SE-ResNet re-implementation.   
-* Folder `notebooks/` contains the ipynb files for all visualization, data expoloration mentioned in the report.
-* Folder `radiomics_feat/` contains the script for runing `pyradiomics`
+* Folder `notebooks/` contains the ipynb files for all visualization, data exploration, and radiomic-based models mentioned in the report.
+* Folder `radiomics_feat/` contains the script for running `pyradiomics`
  library on the LIDC/IDRI dataset, based on the mask generated from the LIDC2DICOM repo.
 * File `train.py` also be modified (and simplified comparing to the original implementation) to match with the training utils.
 * Regarding to the LIDC2DICOM repo, we used all the functions provided since the main purpose is just for data-conversion. To run this repo, we also exploring DOCKER for the first time since this repo requires other third-party softwares that do not available on our computing system.

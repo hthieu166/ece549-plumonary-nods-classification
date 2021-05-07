@@ -5,6 +5,9 @@ import os.path as osp
 import pandas as pd
 import matplotlib.patches as patches
 import seaborn as sns
+from glob import glob
+
+
 def read_test_data(exp_id, fold):
     feats = np.load("../log/infer-%s/deep-feat-%d.npy" %(exp_id, fold))
     preds_all_views = np.load("../log/infer-%s/preds-%d.npy"%(exp_id, fold))
@@ -28,6 +31,24 @@ def read_test_data(exp_id, fold):
     
     return nod_ids, preds, gts, feats, sp_attn_maps
 
+def read_test_data_nlst(exp_id, fold):
+    feats = np.load("../log/infer-%s/deep-feat-nlst%d.npy" %(exp_id, fold))
+    preds_all_views = np.load("../log/infer-%s/preds-nlst%d.npy"%(exp_id, fold))
+    sp_attn_maps  = np.load("../log/infer-%s/sp-att-nlst%d.npy"%(exp_id, fold)).squeeze(2)
+    
+    preds = np.argmax(preds_all_views[0], axis=1)
+    teidlst = []
+    gts=[]
+    nod_ids = []
+    files = np.array(glob("/mnt/nlst/nparray2/*"))
+    for f in files:        
+        gts.append(int(1))
+        nod_ids.append(f.split('/')[-1])
+
+    gts = np.array(gts)
+    nod_ids = np.array(nod_ids)    
+    return nod_ids, preds, gts, feats, sp_attn_maps
+
 def plot_slices(nod_npy, axis = 0):
     fig, axs = plt.subplots(nrows=4,ncols=4,figsize=(20,20))
     for i in range(4):
@@ -42,15 +63,15 @@ def plot_slices(nod_npy, axis = 0):
             axs[i][j].imshow(im, cmap = "bone")
             axs[i][j].axis("off")
             axs[i][j].set_title(str(idx))
-            
-def plot_nodule_img(ax, idx,  nods_lst, gts, img_dir = "/home/hthieu/data/crop/"):
+
+def plot_nodule_img(ax, idx,  nods_lst, gts, img_dir =  "/mnt/nlst/nparray2/"):
     nod_npy   = np.load(osp.join(img_dir, nods_lst[idx]+".npy"))
     ax.add_patch(patches.Rectangle((0,0),31, 31,linewidth=5, edgecolor="red" if gts[idx] == 1 else "green", facecolor='none'))
     ax.imshow(nod_npy[15,:,:], cmap = "bone")
     ax.axis("off")
     ax.set_title(str(idx))
 
-def plot_feature_vector(ax, idx, feats,preds, gts):
+def plot_feature_vector(ax, idx, feats, preds, gts):
     sns.heatmap(feats[:,idx,:].T, ax = ax,
                     vmin =0, vmax=2.5, cbar=False)
     ax.add_patch(patches.Rectangle((0,0),4, 8,linewidth=8, edgecolor="red" if gts[idx] == 1 else "green", facecolor='none'))
@@ -66,7 +87,7 @@ def plot_imgs_grid(viz_func, viz_lst, *kwarg, nrows=2, ncols=8):
             idx = (i * ncols +j)
             if idx >= len(viz_lst):
                 return
-            viz_func(axs[i,j],  viz_lst[idx], *kwarg)
+            viz_func(axs[i,j], idx, viz_lst, *kwarg)
 
 def get_view(nod_npy, view = 0):
     if view == 0:

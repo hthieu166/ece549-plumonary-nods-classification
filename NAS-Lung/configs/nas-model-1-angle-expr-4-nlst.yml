@@ -1,0 +1,16 @@
+model:
+  name: 'NAS'
+  params:
+    config: [[4,4], [4,8], [8,8]]
+loss: 'AngleLoss'
+dataset:
+  normalize:
+    mean: 446.66314534876193
+    std:  576.2785657459063
+train_params:
+  batch_size: 8
+  n_epochs: 400
+  ckpt_every: 200
+  init_lr: 0.0002
+  lr_decay: 0.1
+  decay_epochs: []
