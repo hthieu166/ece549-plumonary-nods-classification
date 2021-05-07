@@ -1,6 +1,7 @@
 # [ECE549/SP21/Final Project] Plumonary Nodules Classification
 Sources code for the final project of ECE549/SP21 class on Plumonary Nodules classification
 
+GitHub repository: https://github.com/hthieu166/ece549-plumonary-nods-classification
 ## Authors:
 * **Hieu Hoang**: hthieu@illinois.edu
 * **Anh Leu**: anhleu@illinois.edu
@@ -9,8 +10,14 @@ Sources code for the final project of ECE549/SP21 class on Plumonary Nodules cla
 We used the pre-processing scripts for cropping nodules, follow the same pipeline as the original Deep-Lung paper. The
 preprocessed LIDIC/IDRI dataset is available at: https://drive.google.com/file/d/1KbklchWZegDlR4ZvLxnwQdzhpJ46YeMH/view?usp=sharing
 
+## Log files
+
+Log file, pretrained weights:
+https://drive.google.com/drive/folders/1GV1sfCR0cRmq6vL0uyjjjjh7gnGpe6Ff?usp=sharing
+
+
 ## Our implementation
-Our implementation is encoupled inside the NAS-Lung folder.
+Our implementation is encoupled inside the `NAS-Lung/` folder.
 
 * Folder `code/` contains our training utils (for logging, tensorboard, etc.), evaluation scripts, data-preprocessing script, config loader.
 * Folder `configs/` contains the training configurations, all hyper-parameters that we used for all experiments.
