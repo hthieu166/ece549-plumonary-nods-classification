@@ -126,25 +126,6 @@ tefnamelst = []
 telabellst = []
 tefeatlst = []
 
-alllst = dataframe['seriesuid'].tolist()[1:]
-labellst = dataframe['malignant'].tolist()[1:]
-crdxlst = dataframe['coordX'].tolist()[1:]
-crdylst = dataframe['coordY'].tolist()[1:]
-crdzlst = dataframe['coordZ'].tolist()[1:]
-dimlst = dataframe['diameter_mm'].tolist()[1:]
-# test id
-teidlst = []
-for test_fold in fold:
-    with open(osp.join(SUBSETS_DIR, "subset{}.txt".format(str(test_fold)))) as fo:
-        teidlst += [i.strip() for i in fo.readlines()]
-print("Total test nodules: ",len(teidlst))
-mxx = mxy = mxz = mxd = 0
-for srsid, label, x, y, z, d in zip(alllst, labellst, crdxlst, crdylst, crdzlst, dimlst):
-    feat = np.array([d]).astype(np.float32)
-    if srsid.split('-')[0] in teidlst:
-        tefnamelst.append(srsid + '.npy')
-        telabellst.append(int(label))
-
 if (args.nlst):
     teidlst = sorted(glob.glob(nlstpath + '/*'))
     print("Total test nodules: ",len(teidlst))
@@ -338,9 +319,14 @@ def test(epoch, infer = False, nlst=False):
         ff.add_test_features(outputs, feat, targets)
 
         if infer == True:
-            test_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
-            test_fcs.append  (torch.stack(outputs[3]).cpu().detach().numpy())
-            test_sp_att.append(torch.stack(outputs[4]).cpu().detach().numpy())
+            if  cfg.model_name == "NAS":
+                test_fcs.append((outputs[0]).cpu().detach().numpy())
+                # test_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
+            else:
+                test_feats.append(torch.stack(outputs[2]).cpu().detach().numpy())
+                test_fcs.append  (torch.stack(outputs[3]).cpu().detach().numpy())
+                test_sp_att.append(torch.stack(outputs[4]).cpu().detach().numpy())
+
         if take_first == True:
             outputs = outputs[0]
         
@@ -353,9 +339,12 @@ def test(epoch, infer = False, nlst=False):
         FP += ((predicted == 1) & (targets.data == 0)).cpu().sum()
     
     if infer == True:
-        test_feats = np.hstack(test_feats)
-        test_fcs   = np.hstack(test_fcs)
-        test_sp_att= np.hstack(test_sp_att)
+        if  cfg.model_name == "NAS":
+            test_fcs   = np.vstack(test_fcs)
+        else:
+            test_fcs   = np.hstack(test_fcs)
+            test_feats = np.hstack(test_feats)
+            test_sp_att= np.hstack(test_sp_att)
         out_dir = osp.join("log", "infer-"+cfg.experiment_id)
         os.makedirs(out_dir, exist_ok = True)
 #     fs_pred = ff.predict()
@@ -363,7 +352,10 @@ def test(epoch, infer = False, nlst=False):
 #         print("combine_acc: ", (fs_pred == test_targets).mean())
         if (nlst):
             np.save(osp.join(out_dir, "deep-feat-nlst%s" % str(args.fold)), test_feats)
-            np.save(osp.join(out_dir, "preds-nlst%s" % str(args.fold)), test_preds)
+            np.save(osp.join(out_dir, "preds-nlst%s" % str(args.fold)), test_fcs)
+            np.save(osp.join(out_dir, "sp-att-nlst%s" % str(args.fold)), test_sp_att)
+    # Save checkpoint.
+
         else:
           np.save(osp.join(out_dir, "deep-feat-%s" % str(args.fold)), test_feats)
           np.save(osp.join(out_dir, "preds-%s" % str(args.fold)), test_fcs)
