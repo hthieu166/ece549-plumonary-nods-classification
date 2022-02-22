@@ -1,5 +1,5 @@
-# [ECE549/SP21/Final Project] Plumonary Nodules Classification
-Sources code for the final project of ECE549/SP21 class on Plumonary Nodules classification
+# [ECE549/SP21/Final Project] Pulmonary Nodules Classification
+Sources code for the final project of ECE549/SP21 class on Pulmonary Nodules classification
 
 GitHub repository: https://github.com/hthieu166/ece549-plumonary-nods-classification
 ## Authors:
