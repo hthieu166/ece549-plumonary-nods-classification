@@ -6,6 +6,9 @@ GitHub repository: https://github.com/hthieu166/ece549-plumonary-nods-classifica
 * **Hieu Hoang**: hthieu@illinois.edu
 * **Anh Leu**: anhleu@illinois.edu
 
+## Report/Presentation Slides:
+https://drive.google.com/drive/folders/19nQEewD1F7JxoRAHSAbppmemjXn0eb54?usp=sharing
+
 ## Download dataset
 We used the pre-processing scripts for cropping nodules, follow the same pipeline as the original Deep-Lung paper. The
 preprocessed LIDIC/IDRI dataset is available at: https://drive.google.com/file/d/1KbklchWZegDlR4ZvLxnwQdzhpJ46YeMH/view?usp=sharing
